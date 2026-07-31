@@ -1,10 +1,5 @@
-const CACHE_NAME = "rasheed-academy-v1";
-const APP_SHELL = [
-  "./",
-  "./index.html",
-  "./login.html",
-  "./register.html",
-  "./quran.html",
+const CACHE_NAME = "rasheed-academy-v2";
+const STATIC_FILES = [
   "./manifest.webmanifest",
   "./assets/rasheed-academy-logo.png",
   "./assets/icons/icon-192.png",
@@ -12,9 +7,7 @@ const APP_SHELL = [
 ];
 
 self.addEventListener("install", event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL))
-  );
+  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(STATIC_FILES)));
   self.skipWaiting();
 });
 
@@ -29,35 +22,19 @@ self.addEventListener("activate", event => {
 
 self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return;
-
   const url = new URL(event.request.url);
-
-  // Never intercept Supabase or other external API traffic.
   if (url.origin !== self.location.origin) return;
 
-  if (event.request.mode === "navigate") {
-    event.respondWith(
-      fetch(event.request)
-        .then(response => {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
-          return response;
-        })
-        .catch(() => caches.match(event.request).then(r => r || caches.match("./index.html")))
-    );
+  // HTML pages are always loaded from the network first and are never stored
+  // in the application cache. This prevents an old blank registration page.
+  if (event.request.mode === "navigate" || url.pathname.endsWith(".html")) {
+    event.respondWith(fetch(event.request));
     return;
   }
 
   event.respondWith(
-    caches.match(event.request).then(cached => {
-      if (cached) return cached;
-      return fetch(event.request).then(response => {
-        if (response && response.status === 200) {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
-        }
-        return response;
-      });
-    })
+    caches.match(event.request).then(cached =>
+      cached || fetch(event.request)
+    )
   );
 });
