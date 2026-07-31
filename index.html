@@ -813,63 +813,64 @@ body{background:var(--ra-cream)!important;color:var(--ra-text)!important}.topbar
 </style>
 
 
-<style id="home-v2-final-fit">
+
+
+
+
+
+
+<style id="home-v2-2-final">
+/* v2.2 — real classroom background with integrated smart display */
 @media (min-width:1251px){
   .topbar .nav{min-height:54px!important}
   .ra-home{margin-top:2px!important;gap:12px!important}
 
+  /* Header identity */
+  .topbar .brand{
+    min-width:245px!important;
+    gap:10px!important;
+    align-items:center!important;
+  }
+  .topbar .brand img{
+    width:46px!important;
+    height:46px!important;
+    object-fit:contain!important;
+    flex:0 0 46px!important;
+  }
+  .topbar .brand-copy{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    justify-content:center!important;
+    line-height:1.05!important;
+    min-width:0!important;
+  }
+  .topbar .brand strong{
+    font-size:18px!important;
+    line-height:1.08!important;
+    white-space:nowrap!important;
+  }
+  .topbar .brand small{
+    font-size:9px!important;
+    line-height:1.15!important;
+    white-space:nowrap!important;
+    margin-top:2px!important;
+  }
+
+  /* Classroom image itself contains the smart screen */
   .ra-classroom{
-    height:174px!important;
+    height:190px!important;
     position:relative!important;
     overflow:hidden!important;
   }
+  .ra-classroom img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:center 54%!important;
+  }
 
-  .ra-smart-screen{
-    position:absolute;
-    top:7px;
-    left:50%;
-    transform:translateX(-50%);
-    width:42%;
-    height:64px;
-    padding:6px 8px;
-    border-radius:7px;
-    background:linear-gradient(145deg,#102f38,#071e25);
-    border:2px solid #253c43;
-    box-shadow:0 4px 12px rgba(0,0,0,.25);
-    color:#fff;
-    z-index:2;
-    direction:rtl;
-    overflow:hidden;
-  }
-  .ra-smart-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:8px;
-    font-size:8px;
-    margin-bottom:5px;
-  }
-  .ra-smart-head span{font-size:6px;opacity:.75}
-  .ra-smart-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:4px;
-  }
-  .ra-smart-grid span{
-    display:grid;
-    place-items:center;
-    min-height:30px;
-    border-radius:4px;
-    background:rgba(18,116,91,.78);
-    font-size:6.5px;
-    text-align:center;
-    line-height:1.15;
-    padding:2px;
-  }
-  .ra-smart-grid span:nth-child(2){background:rgba(40,91,154,.78)}
-  .ra-smart-grid span:nth-child(3){background:rgba(102,63,140,.80)}
-  .ra-smart-grid span:nth-child(4){background:rgba(194,124,8,.82)}
-
+  /* Larger four cards with complete images */
   .ra-program-grid{
     margin-top:7px!important;
     gap:10px!important;
@@ -901,6 +902,7 @@ body{background:var(--ra-cream)!important;color:var(--ra-text)!important}.topbar
     font-size:10px!important;
   }
 
+  /* Compact side cards to keep footer visible at 100% */
   .ra-founder-photo{height:205px!important}
   .ra-founder-body{padding-bottom:7px!important}
   .ra-founder-role{margin-bottom:5px!important}
@@ -942,135 +944,6 @@ body{background:var(--ra-cream)!important;color:var(--ra-text)!important}.topbar
   .footer-inner strong{font-size:13px!important}
   .footer-inner small,.footer-links{font-size:11px!important}
 }
-@media (max-width:1250px){
-  .ra-smart-screen{display:none!important}
-}
-</style>
-
-
-<style id="home-v2-1-polish">
-/* v2.1 — improve smart screen integration + clean academy identity in header */
-@media (min-width:1251px){
-
-  /* LEFT identity: give logo/name breathing room and prevent crowding */
-  .topbar .brand{
-    min-width:245px !important;
-    gap:10px !important;
-    align-items:center !important;
-  }
-  .topbar .brand img{
-    width:46px !important;
-    height:46px !important;
-    object-fit:contain !important;
-    flex:0 0 46px !important;
-  }
-  .topbar .brand-copy{
-    display:flex !important;
-    flex-direction:column !important;
-    align-items:flex-start !important;
-    justify-content:center !important;
-    line-height:1.05 !important;
-    min-width:0 !important;
-  }
-  .topbar .brand strong{
-    font-size:18px !important;
-    line-height:1.08 !important;
-    white-space:nowrap !important;
-  }
-  .topbar .brand small{
-    font-size:9px !important;
-    line-height:1.15 !important;
-    white-space:nowrap !important;
-    margin-top:2px !important;
-  }
-
-  /* Keep the header balanced after improving identity */
-  .topbar .nav{
-    grid-template-columns:280px minmax(420px,1fr) 280px !important;
-    gap:18px !important;
-  }
-
-  /* Classroom image: preserve current compact height */
-  .ra-classroom{
-    height:174px !important;
-    position:relative !important;
-    overflow:hidden !important;
-  }
-
-  /* Smart screen: larger, integrated, and visually attached to the back wall */
-  .ra-smart-screen{
-    position:absolute !important;
-    top:4px !important;
-    left:50% !important;
-    transform:translateX(-50%) !important;
-    width:48% !important;
-    height:78px !important;
-    padding:7px 9px !important;
-    border-radius:6px !important;
-    background:
-      linear-gradient(180deg,rgba(16,45,53,.98),rgba(7,27,33,.98)) !important;
-    border:3px solid #2d3f45 !important;
-    box-shadow:
-      0 3px 7px rgba(0,0,0,.28),
-      inset 0 0 0 1px rgba(255,255,255,.06) !important;
-    color:#fff !important;
-    z-index:2 !important;
-    direction:rtl !important;
-  }
-  .ra-smart-screen::after{
-    content:"";
-    position:absolute;
-    left:50%;
-    bottom:-5px;
-    transform:translateX(-50%);
-    width:36%;
-    height:5px;
-    background:#263a40;
-    border-radius:0 0 5px 5px;
-  }
-  .ra-smart-head{
-    display:flex !important;
-    align-items:center !important;
-    justify-content:space-between !important;
-    gap:8px !important;
-    margin-bottom:6px !important;
-    font-size:8px !important;
-  }
-  .ra-smart-head b{
-    font-size:8.5px !important;
-    color:#f6f8f7 !important;
-  }
-  .ra-smart-head span{
-    font-size:6.5px !important;
-    color:#b9cbc6 !important;
-  }
-  .ra-smart-grid{
-    display:grid !important;
-    grid-template-columns:repeat(4,1fr) !important;
-    gap:5px !important;
-  }
-  .ra-smart-grid span{
-    min-height:36px !important;
-    display:flex !important;
-    align-items:center !important;
-    justify-content:center !important;
-    padding:3px !important;
-    border-radius:4px !important;
-    font-size:6.8px !important;
-    line-height:1.15 !important;
-    text-align:center !important;
-    box-shadow:inset 0 0 0 1px rgba(255,255,255,.08) !important;
-  }
-
-  /* Keep current program cards/footer proportions untouched */
-}
-
-/* English header alignment remains clean */
-@media (min-width:981px){
-  body.english .topbar .brand-copy{
-    align-items:flex-start !important;
-  }
-}
 </style>
 
 </head>
@@ -1080,14 +953,6 @@ body{background:var(--ra-cream)!important;color:var(--ra-text)!important}.topbar
 <aside class="ra-founder" id="founder"><img class="ra-founder-photo" src="assets/images/home/founder-samy.jpeg" alt="سامي سليمان رشيد"/><div class="ra-founder-body"><span class="ra-founder-badge"><span data-ar>بيانات المؤسس</span><span data-en>Founder Profile</span></span><h2><span data-ar>سامي سليمان رشيد</span><span data-en>Samy Suliman Rasheed</span></h2><p class="ra-founder-role"><span data-ar>المؤسس والمدير العام</span><span data-en>Founder & General Manager</span></p><ul class="ra-founder-list"><li>🎓 <b data-ar>خبير تربوي وتعليمي لأكثر من 20 عامًا</b><b data-en>Education professional with 20+ years of experience</b></li><li>▣ <b data-ar>مدرب معتمد ومطور مناهج</b><b data-en>Certified trainer and curriculum developer</b></li><li>📖 <b data-ar>مؤلف وباحث في التربية والعلوم الشرعية</b><b data-en>Author and researcher in education and Islamic sciences</b></li></ul></div></aside>
 <section class="ra-center"><div class="ra-classroom">
 <img src="assets/images/home/students-classroom.jpg" alt="طلاب يتعلمون في بيئة أكاديمية حديثة"/>
-<div class="ra-smart-screen" aria-hidden="true">
-  <div class="ra-smart-head"><b>أكاديمية رشيد</b><span>Rasheed Academy</span></div>
-  <div class="ra-smart-grid">
-    <span>📖 القرآن الكريم</span>
-    <span>⚙ العلوم الشرعية</span>
-    <span>🎓 البرامج التعليمية</span>
-    <span>📝 الواجبات</span>
-  </div>
 </div>
 </div><div class="ra-program-grid" id="programs">
 <a class="ra-program quran" data-program="quran" href="quran.html" role="button"><div class="ra-program-visual"><img src="assets/study-cards/quran-islamic-studies.png" alt="القرآن الكريم والعلوم الشرعية"/></div><div class="ra-program-body"><h3><span data-ar>القرآن الكريم<br>والعلوم الشرعية</span><span data-en>Qur'an & Islamic Studies</span></h3><p class="block" data-ar>تعلم القرآن والتجويد والحفظ والعلوم الشرعية والعربية.</p><p class="block" data-en>Qur'an, Tajweed, memorization, Islamic sciences and Arabic.</p><span class="ra-program-tag"><span data-ar>دراسة حرة ومرنة</span><span data-en>Flexible Study</span></span></div></a>
