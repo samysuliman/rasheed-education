@@ -591,18 +591,239 @@ body{background:var(--ra-cream)!important;color:var(--ra-text)!important}.topbar
   .ra-benefit span{font-size:9.5px!important}
 }
 </style>
+
+<style id="home-desktop-v1-4">
+/* v1.4 — final desktop viewport fit: preserve card readability, separate identity logo, reveal benefits at 100%. */
+@media (min-width:1251px){
+  .nav{min-height:56px!important;padding-top:1px!important;padding-bottom:1px!important}
+  .brand img{width:46px!important;height:46px!important}
+  .brand strong{font-size:18px!important}
+  .brand small{font-size:9.5px!important}
+
+  .ra-home{margin-top:2px!important;gap:12px!important}
+
+  .ra-founder-photo{height:214px!important}
+  .ra-founder-body{padding-bottom:9px!important}
+  .ra-founder-badge{transform:translateY(-13px)!important}
+  .ra-founder-role{margin-bottom:6px!important}
+  .ra-founder-list{gap:4px!important}
+  .ra-founder-list li{line-height:1.28!important}
+  .ra-founder-signature{margin-top:5px!important}
+
+  .ra-identity{height:62px!important;padding:0 0 4px!important;overflow:hidden!important}
+  .ra-identity-logo{width:142px!important;max-width:142px!important;max-height:58px!important;object-fit:contain!important;margin:0 auto!important}
+  .ra-classroom{height:148px!important;margin-top:2px!important}
+
+  /* Keep program cards readable; only tighten surrounding whitespace. */
+  .ra-program-grid{margin-top:5px!important;gap:8px!important}
+  .ra-program-visual{height:88px!important}
+  .ra-program-body{padding:7px 7px 6px!important}
+  .ra-program h3{font-size:14.5px!important;line-height:1.28!important}
+  .ra-program-tag{margin-top:4px!important}
+
+  .ra-login{padding:12px 14px!important;min-height:426px!important}
+  .ra-login h2{margin:1px 0 1px!important}
+  .ra-login-sub{margin-bottom:6px!important}
+  .ra-role-grid{margin-bottom:6px!important}
+  .ra-role-grid label{min-height:31px!important}
+  .ra-field{margin-bottom:6px!important}
+  .ra-field input{height:39px!important}
+  .ra-login-row{margin-bottom:6px!important}
+  .ra-login-btn{height:39px!important}
+  .ra-separator{margin:7px 0!important}
+  .ra-alt-btn{height:35px!important;margin-top:5px!important}
+  .ra-register{margin-top:6px!important}
+
+  .ra-benefits{margin-top:3px!important;margin-bottom:6px!important}
+  .ra-benefit{padding:6px 7px!important}
+  .ra-benefit-icon{font-size:18px!important;margin-bottom:0!important}
+  .ra-benefit b{font-size:14px!important;margin-bottom:0!important}
+  .ra-benefit span{font-size:9px!important;line-height:1.25!important}
+}
+</style>
+
+<style id="home-approved-swap-v1-7">
+/* v1.7 — approved layout:
+   Arabic desktop: login/language RIGHT, navigation CENTER, academy identity LEFT.
+   The large center logo is removed and the academy logo appears inside login panel. */
+
+.ra-login-logo{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 8px;
+}
+.ra-login-logo img{
+  width:88px;
+  height:68px;
+  object-fit:contain;
+  background:#fff;
+  border-radius:12px;
+  padding:4px;
+  border:1px solid rgba(223,166,44,.7);
+}
+
+@media (min-width:981px){
+  .nav{
+    direction:rtl !important;
+  }
+  /* DOM order is now actions -> nav -> brand, so RTL renders:
+     actions at right, nav center, brand at left */
+  .actions{
+    margin-inline-start:0 !important;
+    margin-inline-end:auto !important;
+  }
+  .brand{
+    margin-inline-start:auto !important;
+    margin-inline-end:0 !important;
+  }
+
+  .ra-center{
+    padding-top:0 !important;
+  }
+  .ra-classroom{
+    margin-top:0 !important;
+  }
+}
+
+@media (min-width:1251px){
+  .ra-login-logo{
+    margin-bottom:5px;
+  }
+  .ra-login-logo img{
+    width:70px;
+    height:54px;
+  }
+  .ra-classroom{
+    height:205px !important;
+  }
+}
+
+@media (max-width:980px){
+  .ra-login-logo img{
+    width:96px;
+    height:74px;
+  }
+}
+</style>
+
+
+<style id="header-hard-position-v1-8">
+/* v1.8 — force the header positions explicitly, independent of RTL flex behavior */
+@media (min-width:981px){
+  .topbar .nav{
+    display:grid !important;
+    grid-template-columns:260px minmax(420px,1fr) 260px !important;
+    align-items:center !important;
+    direction:ltr !important;
+    width:min(1320px,calc(100% - 20px)) !important;
+  }
+
+  /* LEFT: academy name + logo */
+  .topbar .brand{
+    grid-column:1 !important;
+    grid-row:1 !important;
+    justify-self:start !important;
+    direction:rtl !important;
+    margin:0 !important;
+    display:flex !important;
+  }
+
+  /* CENTER: navigation */
+  .topbar .navlinks{
+    grid-column:2 !important;
+    grid-row:1 !important;
+    justify-self:center !important;
+    direction:rtl !important;
+    margin:0 !important;
+    display:flex !important;
+  }
+
+  /* RIGHT: login + AR/EN */
+  .topbar .actions{
+    grid-column:3 !important;
+    grid-row:1 !important;
+    justify-self:end !important;
+    direction:rtl !important;
+    margin:0 !important;
+    display:flex !important;
+  }
+
+  .topbar .actions .lang{
+    direction:ltr !important;
+  }
+
+  body.english .topbar .brand,
+  body.english .topbar .navlinks,
+  body.english .topbar .actions{
+    direction:ltr !important;
+  }
+}
+
+/* keep mobile behavior unchanged */
+@media (max-width:980px){
+  .topbar .nav{
+    display:flex !important;
+  }
+}
+</style>
+
+
+<style id="header-absolute-v1-9">
+/* v1.9 — physical header placement, independent of RTL/LTR flex/grid rules */
+@media (min-width:981px){
+  .topbar .nav{
+    position:relative !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    direction:rtl !important;
+    min-height:56px !important;
+  }
+  .topbar .brand{
+    position:absolute !important;
+    left:0 !important;
+    right:auto !important;
+    top:50% !important;
+    transform:translateY(-50%) !important;
+    margin:0 !important;
+    display:flex !important;
+    direction:rtl !important;
+  }
+  .topbar .actions{
+    position:absolute !important;
+    right:0 !important;
+    left:auto !important;
+    top:50% !important;
+    transform:translateY(-50%) !important;
+    margin:0 !important;
+    display:flex !important;
+    direction:rtl !important;
+  }
+  .topbar .navlinks{
+    position:static !important;
+    margin:0 auto !important;
+    display:flex !important;
+    justify-content:center !important;
+    direction:rtl !important;
+    flex:none !important;
+  }
+  .topbar .actions .lang{direction:ltr !important;}
+}
+</style>
+
 </head>
 <body>
-<header class="topbar"><div class="container nav"><a class="brand" href="index.html"><img alt="Rasheed Academy" src="assets/rasheed-academy-logo.png"/><span class="brand-copy"><strong data-ar>أكاديمية رشيد</strong><strong data-en>Rasheed Academy</strong><small data-ar>منصة تعليمية</small><small data-en>Educational Platform</small></span></a><nav class="navlinks"><a href="index.html"><span data-ar>الرئيسية</span><span data-en>Home</span></a><a href="quran.html"><span data-ar>مسارات القرآن</span><span data-en>Qur'an Paths</span></a><a href="quran.html#sciences"><span data-ar>العلوم الشرعية</span><span data-en>Islamic Sciences</span></a><a href="#programs"><span data-ar>البرامج</span><span data-en>Programs</span></a><a href="#founder"><span data-ar>عن المؤسس</span><span data-en>Founder</span></a></nav><div class="actions"><div class="lang"><button id="enBtn">EN</button><button class="active" id="arBtn">AR</button></div><a class="btn btn-gold" href="login.html"><span data-ar>تسجيل الدخول</span><span data-en>Sign In</span></a></div></div></header>
+<header class="topbar"><div class="container nav"><div class="actions"><div class="lang"><button id="enBtn">EN</button><button class="active" id="arBtn">AR</button></div><a class="btn btn-gold" href="login.html"><span data-ar>تسجيل الدخول</span><span data-en>Sign In</span></a></div><nav class="navlinks"><a href="index.html"><span data-ar>الرئيسية</span><span data-en>Home</span></a><a href="quran.html"><span data-ar>مسارات القرآن</span><span data-en>Qur'an Paths</span></a><a href="quran.html#sciences"><span data-ar>العلوم الشرعية</span><span data-en>Islamic Sciences</span></a><a href="#programs"><span data-ar>البرامج</span><span data-en>Programs</span></a><a href="#founder"><span data-ar>عن المؤسس</span><span data-en>Founder</span></a></nav><a class="brand" href="index.html"><img alt="Rasheed Academy" src="assets/rasheed-academy-logo.png"/><span class="brand-copy"><strong data-ar>أكاديمية رشيد</strong><strong data-en>Rasheed Academy</strong><small data-ar>منصة تعليمية</small><small data-en>Educational Platform</small></span></a></div></header>
 <main><section class="ra-home">
-<aside class="ra-founder" id="founder"><img class="ra-founder-photo" src="assets/images/home/founder-samy.jpeg" alt="سامي سليمان رشيد"/><div class="ra-founder-body"><span class="ra-founder-badge"><span data-ar>بيانات المؤسس</span><span data-en>Founder Profile</span></span><h2><span data-ar>سامي سليمان رشيد</span><span data-en>Samy Suliman Rasheed</span></h2><p class="ra-founder-role"><span data-ar>المؤسس والمدير العام</span><span data-en>Founder & General Manager</span></p><ul class="ra-founder-list"><li>🎓 <b data-ar>خبير تربوي وتعليمي لأكثر من 20 عامًا</b><b data-en>Education professional with 20+ years of experience</b></li><li>▣ <b data-ar>مدرب معتمد ومطور مناهج</b><b data-en>Certified trainer and curriculum developer</b></li><li>📖 <b data-ar>مؤلف وباحث في التربية والعلوم الشرعية</b><b data-en>Author and researcher in education and Islamic sciences</b></li></ul><div class="ra-founder-signature">سامي سليمان رشيد</div></div></aside>
-<section class="ra-center"><div class="ra-identity"><img class="ra-identity-logo" src="assets/images/home/rasheed-logo-full.jpeg" alt="أكاديمية رشيد"/></div><div class="ra-classroom"><img src="assets/images/home/students-classroom.jpg" alt="طلاب يتعلمون في بيئة أكاديمية حديثة"/></div><div class="ra-program-grid" id="programs">
+<aside class="ra-founder" id="founder"><img class="ra-founder-photo" src="assets/images/home/founder-samy.jpeg" alt="سامي سليمان رشيد"/><div class="ra-founder-body"><span class="ra-founder-badge"><span data-ar>بيانات المؤسس</span><span data-en>Founder Profile</span></span><h2><span data-ar>سامي سليمان رشيد</span><span data-en>Samy Suliman Rasheed</span></h2><p class="ra-founder-role"><span data-ar>المؤسس والمدير العام</span><span data-en>Founder & General Manager</span></p><ul class="ra-founder-list"><li>🎓 <b data-ar>خبير تربوي وتعليمي لأكثر من 20 عامًا</b><b data-en>Education professional with 20+ years of experience</b></li><li>▣ <b data-ar>مدرب معتمد ومطور مناهج</b><b data-en>Certified trainer and curriculum developer</b></li><li>📖 <b data-ar>مؤلف وباحث في التربية والعلوم الشرعية</b><b data-en>Author and researcher in education and Islamic sciences</b></li></ul></div></aside>
+<section class="ra-center"><div class="ra-classroom"><img src="assets/images/home/students-classroom.jpg" alt="طلاب يتعلمون في بيئة أكاديمية حديثة"/></div><div class="ra-program-grid" id="programs">
 <a class="ra-program quran" data-program="quran" href="quran.html" role="button"><div class="ra-program-visual"><img src="assets/study-cards/quran-islamic-studies.png" alt="القرآن الكريم والعلوم الشرعية"/></div><div class="ra-program-body"><h3><span data-ar>القرآن الكريم<br>والعلوم الشرعية</span><span data-en>Qur'an & Islamic Studies</span></h3><p class="block" data-ar>تعلم القرآن والتجويد والحفظ والعلوم الشرعية والعربية.</p><p class="block" data-en>Qur'an, Tajweed, memorization, Islamic sciences and Arabic.</p><span class="ra-program-tag"><span data-ar>دراسة حرة ومرنة</span><span data-en>Flexible Study</span></span></div></a>
 <article class="ra-program saudi" data-program="saudi" role="button" tabindex="0"><div class="ra-program-visual"><img src="assets/study-cards/saudi-private-education.png" alt="التعليم الأهلي السعودي"/></div><div class="ra-program-body"><h3><span data-ar>التعليم الأهلي<br>السعودي</span><span data-en>Saudi Private Education</span></h3><p class="block" data-ar>المراحل والصفوف والمواد المقررة في المنهج السعودي.</p><p class="block" data-en>Saudi curriculum stages, grades and subjects.</p><span class="ra-program-tag"><span data-ar>ابتدائي - متوسط - ثانوي</span><span data-en>Primary - Middle - Secondary</span></span></div></article>
 <article class="ra-program global" data-program="global" role="button" tabindex="0"><div class="ra-program-visual"><img src="assets/study-cards/saudi-international-education.png" alt="التعليم العالمي السعودي"/></div><div class="ra-program-body"><h3><span data-ar>التعليم العالمي<br>السعودي</span><span data-en>Saudi International Education</span></h3><p class="block" data-ar>مناهج عالمية مع مواد الهوية الوطنية السعودية.</p><p class="block" data-en>International curricula with Saudi national identity subjects.</p><span class="ra-program-tag"><span data-ar>ابتدائي - متوسط - ثانوي</span><span data-en>Primary - Middle - Secondary</span></span></div></article>
 <article class="ra-program egypt" data-program="egypt" role="button" tabindex="0"><div class="ra-program-visual"><img src="assets/study-cards/egyptian-education.png" alt="التعليم المصري"/></div><div class="ra-program-body"><h3><span data-ar>التعليم المصري<br>(عام - أزهري)</span><span data-en>Egyptian Education</span></h3><p class="block" data-ar>التعليم العام والتعليم الأزهري بجميع المراحل والمواد.</p><p class="block" data-en>General and Al-Azhar education across all stages.</p><span class="ra-program-tag"><span data-ar>عام - أزهري</span><span data-en>General - Al-Azhar</span></span></div></article>
 </div></section>
-<aside class="ra-login"><h2><span data-ar>أهلًا بك في أكاديمية رشيد</span><span data-en>Welcome to Rasheed Academy</span></h2><p class="ra-login-sub"><span data-ar>سجل دخولك للمتابعة والتعلم</span><span data-en>Sign in to continue learning</span></p><form id="unifiedLoginForm"><span class="ra-role-title"><span data-ar>نوع الحساب</span><span data-en>Account type</span></span><div class="ra-role-grid"><div><input id="homeRoleStudent" name="loginRole" type="radio" value="student" checked><label for="homeRoleStudent"><span data-ar>طالب</span><span data-en>Student</span></label></div><div><input id="homeRoleTeacher" name="loginRole" type="radio" value="teacher"><label for="homeRoleTeacher"><span data-ar>معلم</span><span data-en>Teacher</span></label></div><div><input id="homeRoleParent" name="loginRole" type="radio" value="parent"><label for="homeRoleParent"><span data-ar>ولي أمر</span><span data-en>Parent</span></label></div><div><input id="homeRoleAdmin" name="loginRole" type="radio" value="admin"><label for="homeRoleAdmin"><span data-ar>مدير</span><span data-en>Admin</span></label></div></div><div class="ra-field"><input id="email" type="email" autocomplete="username" required placeholder="البريد الإلكتروني"></div><div class="ra-field"><input id="password" type="password" autocomplete="current-password" required placeholder="كلمة المرور"></div><div class="ra-login-row"><a href="login.html"><span data-ar>نسيت كلمة المرور؟</span><span data-en>Forgot password?</span></a><span data-ar>دخول آمن</span><span data-en>Secure sign-in</span></div><button id="unifiedLoginBtn" class="ra-login-btn" type="submit">تسجيل الدخول</button><div id="loginError" class="ra-login-error hide" role="alert"></div></form><div class="ra-separator"><span data-ar>أو تابع من بوابة الدخول</span><span data-en>Or use the full login portal</span></div><a class="ra-alt-btn" href="login.html">◎ <span data-ar>بوابة الدخول الموحدة</span><span data-en>Unified Login Portal</span></a><div class="ra-register"><span data-ar>ليس لديك حساب؟</span><span data-en>New learner?</span> <a href="register.html"><span data-ar>سجل الآن</span><span data-en>Register now</span></a></div></aside>
+<aside class="ra-login"><div class="ra-login-logo"><img src="assets/images/home/rasheed-logo-full.jpeg" alt="أكاديمية رشيد"/></div><h2><span data-ar>أهلًا بك في أكاديمية رشيد</span><span data-en>Welcome to Rasheed Academy</span></h2><p class="ra-login-sub"><span data-ar>سجل دخولك للمتابعة والتعلم</span><span data-en>Sign in to continue learning</span></p><form id="unifiedLoginForm"><span class="ra-role-title"><span data-ar>نوع الحساب</span><span data-en>Account type</span></span><div class="ra-role-grid"><div><input id="homeRoleStudent" name="loginRole" type="radio" value="student" checked><label for="homeRoleStudent"><span data-ar>طالب</span><span data-en>Student</span></label></div><div><input id="homeRoleTeacher" name="loginRole" type="radio" value="teacher"><label for="homeRoleTeacher"><span data-ar>معلم</span><span data-en>Teacher</span></label></div><div><input id="homeRoleParent" name="loginRole" type="radio" value="parent"><label for="homeRoleParent"><span data-ar>ولي أمر</span><span data-en>Parent</span></label></div><div><input id="homeRoleAdmin" name="loginRole" type="radio" value="admin"><label for="homeRoleAdmin"><span data-ar>مدير</span><span data-en>Admin</span></label></div></div><div class="ra-field"><input id="email" type="email" autocomplete="username" required placeholder="البريد الإلكتروني"></div><div class="ra-field"><input id="password" type="password" autocomplete="current-password" required placeholder="كلمة المرور"></div><div class="ra-login-row"><a href="login.html"><span data-ar>نسيت كلمة المرور؟</span><span data-en>Forgot password?</span></a><span data-ar>دخول آمن</span><span data-en>Secure sign-in</span></div><button id="unifiedLoginBtn" class="ra-login-btn" type="submit">تسجيل الدخول</button><div id="loginError" class="ra-login-error hide" role="alert"></div></form><div class="ra-separator"><span data-ar>أو تابع من بوابة الدخول</span><span data-en>Or use the full login portal</span></div><a class="ra-alt-btn" href="login.html">◎ <span data-ar>بوابة الدخول الموحدة</span><span data-en>Unified Login Portal</span></a><div class="ra-register"><span data-ar>ليس لديك حساب؟</span><span data-en>New learner?</span> <a href="register.html"><span data-ar>سجل الآن</span><span data-en>Register now</span></a></div></aside>
 </section><section class="ra-benefits"><div class="ra-benefit"><div class="ra-benefit-icon">🎓</div><b><span data-ar>نظام متكامل</span><span data-en>Integrated System</span></b><span data-ar>للطلاب والمعلمين وأولياء الأمور والإدارة</span><span data-en>Students, teachers, parents and administration</span></div><div class="ra-benefit"><div class="ra-benefit-icon">⑩</div><b><span data-ar>10 مسارات</span><span data-en>10 Tracks</span></b><span data-ar>للقرآن الكريم والعلوم الشرعية</span><span data-en>Qur'an and Islamic sciences</span></div><div class="ra-benefit"><div class="ra-benefit-icon">📖</div><b><span data-ar>4 برامج تعليمية</span><span data-en>4 Programs</span></b><span data-ar>خيارات تعليمية تلائم الاحتياجات المختلفة</span><span data-en>Learning options for different needs</span></div><div class="ra-benefit"><div class="ra-benefit-icon">🛡️</div><b><span data-ar>بيئة آمنة ومحفزة</span><span data-en>Safe Learning Environment</span></b><span data-ar>تعلم منظم ودعم مستمر</span><span data-en>Structured learning and continuous support</span></div></section></main><footer>
 <div class="container footer-inner">
 <div><strong><span data-ar="">أكاديمية رشيد</span><span data-en="">Rasheed Academy</span></strong><br/><small><span data-ar="">مجموعة رشيد التعليمية</span><span data-en="">Rasheed Education Group</span></small></div>
