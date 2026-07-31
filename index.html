@@ -1102,39 +1102,18 @@ body{background:var(--ra-cream)!important;color:var(--ra-text)!important}.topbar
 </style>
 
 
-<style id="home-visible-final-fix">
-/* تعديل ظاهر ومحصور في نسخة الكمبيوتر فقط */
+<style id="home-final-touch-v3-0">
+/* Final desktop touch: lower academy identity slightly and lower the four cards. */
 @media (min-width:1251px){
 
-  /* تكبير الهيدر قليلًا وإعطاء هوية الأكاديمية مساحة مريحة */
-  .topbar .nav{
-    min-height:72px !important;
-    height:72px !important;
-  }
+  /* Move the academy identity down inside the header without changing its size. */
   .topbar .brand{
-    width:285px !important;
-    min-width:285px !important;
-    gap:12px !important;
-    overflow:visible !important;
-  }
-  .topbar .brand img{
-    width:54px !important;
-    height:54px !important;
-    flex:0 0 54px !important;
-  }
-  .topbar .brand strong{
-    font-size:19px !important;
-    line-height:1.12 !important;
-  }
-  .topbar .brand small{
-    font-size:10px !important;
-    line-height:1.2 !important;
-    margin-top:3px !important;
+    top:calc(50% + 7px) !important;
   }
 
-  /* إنزال البطاقات الأربع بوضوح قليلًا أسفل صورة الطلاب */
+  /* Lower the four study cards slightly below the classroom image. */
   .ra-program-grid{
-    margin-top:26px !important;
+    margin-top:32px !important;
   }
 }
 </style>
