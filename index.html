@@ -946,6 +946,76 @@ body{background:var(--ra-cream)!important;color:var(--ra-text)!important}.topbar
 }
 </style>
 
+
+<style id="home-v2-3-final-polish">
+/* v2.3 — تعديل نقطتين فقط: موضع صورة الفصل + هوية الأكاديمية في الهيدر */
+@media (min-width:1251px){
+
+  /* إظهار الجزء العلوي من الشاشة الذكية داخل صورة الفصل */
+  .ra-classroom img{
+    object-position:center 36% !important;
+  }
+
+  /* ترتيب هوية الأكاديمية أعلى اليسار بدون ازدحام */
+  .topbar .brand{
+    width:250px !important;
+    min-width:250px !important;
+    display:grid !important;
+    grid-template-columns:48px minmax(0,1fr) !important;
+    grid-template-rows:auto auto !important;
+    column-gap:10px !important;
+    align-items:center !important;
+    justify-content:start !important;
+    direction:ltr !important;
+    overflow:visible !important;
+  }
+
+  .topbar .brand img{
+    grid-column:1 !important;
+    grid-row:1 / span 2 !important;
+    width:46px !important;
+    height:46px !important;
+    object-fit:contain !important;
+    margin:0 !important;
+    align-self:center !important;
+  }
+
+  .topbar .brand-copy{
+    grid-column:2 !important;
+    grid-row:1 / span 2 !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:center !important;
+    align-items:flex-start !important;
+    min-width:0 !important;
+    line-height:1 !important;
+    direction:rtl !important;
+  }
+
+  .topbar .brand strong{
+    display:block !important;
+    font-size:17px !important;
+    line-height:1.08 !important;
+    margin:0 !important;
+    white-space:nowrap !important;
+  }
+
+  .topbar .brand small{
+    display:block !important;
+    font-size:9px !important;
+    line-height:1.15 !important;
+    margin-top:3px !important;
+    white-space:nowrap !important;
+    color:var(--ra-gold) !important;
+  }
+
+  body.english .topbar .brand-copy{
+    direction:ltr !important;
+    align-items:flex-start !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="topbar"><div class="container nav"><div class="actions"><div class="lang"><button id="enBtn">EN</button><button class="active" id="arBtn">AR</button></div><a class="btn btn-gold" href="login.html"><span data-ar>تسجيل الدخول</span><span data-en>Sign In</span></a></div><nav class="navlinks"><a href="index.html"><span data-ar>الرئيسية</span><span data-en>Home</span></a><a href="quran.html"><span data-ar>مسارات القرآن</span><span data-en>Qur'an Paths</span></a><a href="quran.html#sciences"><span data-ar>العلوم الشرعية</span><span data-en>Islamic Sciences</span></a><a href="#programs"><span data-ar>البرامج</span><span data-en>Programs</span></a><a href="#founder"><span data-ar>عن المؤسس</span><span data-en>Founder</span></a></nav><a class="brand" href="index.html"><img alt="Rasheed Academy" src="assets/rasheed-academy-logo.png"/><span class="brand-copy"><strong data-ar>أكاديمية رشيد</strong><strong data-en>Rasheed Academy</strong><small data-ar>منصة تعليمية</small><small data-en>Educational Platform</small></span></a></div></header>
