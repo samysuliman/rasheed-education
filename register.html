@@ -1,78 +1,268 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>التسجيل | أكاديمية رشيد</title><link rel="stylesheet" href="assets/css/styles.css">
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>التسجيل | أكاديمية رشيد</title>
+<meta name="theme-color" content="#073d32">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
 <style>
-html,body{max-width:100%;overflow-x:hidden}
-.reg{width:100%;max-width:900px;margin:auto;min-width:0}
-.choice-summary{margin:18px 0;padding:18px;border:1px solid #d6e4de;border-radius:18px;background:#f5fbf8;min-width:0}
-.choice-summary h2{margin-top:0}
-.sum-item{padding:12px;margin:8px 0;border-radius:12px;background:white;border:1px solid #dce8e3;overflow-wrap:anywhere}
-.sum-item strong{display:block;color:#075a48}
-.empty{color:#687b74}
-.actions{display:flex;gap:10px;flex-wrap:wrap}
-.actions a,.actions button{flex:1;min-width:200px}
-.phase-note{margin-top:14px;padding:12px;border-radius:12px;background:#eef5ff;border:1px solid #cedff5;font-size:13px;color:#40566f}
-textarea{width:100%;max-width:100%;padding:12px;border:1px solid #cddbd5;border-radius:12px;font:inherit;resize:vertical}
-.reg input,.reg select,.reg textarea{min-width:0;max-width:100%}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;width:100%;max-width:100%;overflow-x:hidden}
+body{font-family:Tahoma,Arial,sans-serif;background:#f6f8f7;color:#173b32;line-height:1.7}
+a{text-decoration:none;color:inherit}
+.topbar{background:#073d32;color:#fff;position:sticky;top:0;z-index:10}
+.nav{width:min(94%,980px);margin:auto;min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;min-width:0}
+.brand-mark{width:40px;height:40px;border-radius:12px;background:#fff;color:#073d32;display:grid;place-items:center;flex:0 0 40px}
+.brand small{display:block;font-size:10px;font-weight:500;opacity:.85}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:12px;padding:11px 15px;font:inherit;font-weight:700;cursor:pointer;background:#e8efec;color:#073d32}
+.btn-primary{background:#caa64b;color:#163c33}
+.page{padding:28px 0 48px}
+.reg{width:min(94%,900px);margin:auto}
+.page-title{text-align:center;margin:0 0 4px;font-size:30px;line-height:1.35}
+.muted{text-align:center;color:#6a7f77;margin:0 0 18px;font-size:14px}
+.choice-summary,.panel{background:#fff;border:1px solid #d9e5e0;border-radius:18px;box-shadow:0 6px 18px rgba(0,0,0,.04)}
+.choice-summary{padding:16px;margin-bottom:16px;background:#f3faf7}
+.choice-summary h2{font-size:19px;margin:0 0 10px}
+.sum-item{padding:11px;margin:8px 0;border-radius:12px;background:#fff;border:1px solid #dce8e3;overflow-wrap:anywhere}
+.sum-item strong{display:block;color:#075a48;margin-bottom:2px}
+.empty{color:#687b74;font-size:13px}
+.panel{padding:18px}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.field{min-width:0}
+label{display:block;font-size:13px;font-weight:700;margin-bottom:5px}
+input,select,textarea{display:block;width:100%;max-width:100%;min-width:0;border:1px solid #cbdad4;background:#fff;border-radius:11px;padding:12px;font:inherit;font-size:16px;color:#173b32}
+textarea{resize:vertical}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.actions .btn{flex:1;min-height:48px;min-width:180px}
+.notice{margin-top:12px;padding:12px;border-radius:11px;background:#eaf8f1;border:1px solid #b8dfcd}
+.notice.error{background:#fff0f0;border-color:#efc2c2;color:#8b2424}
+.hide{display:none!important}
 @media(max-width:620px){
-  .page{padding:26px 0 48px}
-  .container.reg{width:94%;max-width:none;margin-inline:auto}
-  .page-title{font-size:28px;line-height:1.35;text-align:center;margin-bottom:6px}
-  .reg>.muted{text-align:center;font-size:13px;margin:0 0 14px}
-  .choice-summary{margin:14px 0;padding:14px;border-radius:16px}
-  .choice-summary h2{font-size:19px;margin-bottom:10px}
-  .sum-item{font-size:13px;padding:10px}
-  .panel{padding:15px;border-radius:18px}
-  .form-grid{grid-template-columns:1fr!important;gap:12px}
-  .field{width:100%;min-width:0}
-  label{font-size:13px}
-  input,select,textarea{font-size:16px!important;width:100%!important}
-  .actions{display:grid;grid-template-columns:1fr;gap:9px}
-  .actions a,.actions button{width:100%;min-width:0;min-height:48px}
-  .choice-summary>.btn{width:100%;min-height:44px}
-  .topbar .nav{min-height:62px}
-  .topbar .brand{min-width:0;gap:8px}
-  .topbar .brand-mark{width:38px;height:38px;border-radius:12px;flex:0 0 38px}
-  .topbar .brand>span:last-child{font-size:13px;line-height:1.35}
-  .topbar .brand small{font-size:10px;white-space:normal}
-}
-@media(max-width:380px){
-  .container.reg{width:96%}
-  .panel{padding:12px}
-  .choice-summary{padding:12px}
+  .nav{width:94%;min-height:62px}
+  .brand{font-size:13px}
+  .brand small{font-size:9px;white-space:normal}
+  .topbar .btn{padding:9px 11px;font-size:12px}
+  .page{padding:22px 0 42px}
   .page-title{font-size:25px}
+  .reg{width:94%}
+  .form-grid{grid-template-columns:1fr}
+  .choice-summary,.panel{border-radius:16px}
+  .panel{padding:14px}
+  .actions{display:grid;grid-template-columns:1fr}
+  .actions .btn{width:100%;min-width:0}
 }
-</style><link rel="manifest" href="manifest.webmanifest"/>
-<meta name="theme-color" content="#073d32"/>
-<meta name="mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
-<meta name="apple-mobile-web-app-title" content="أكاديمية رشيد"/>
-<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"/>
+</style>
 </head>
-<body><header class="topbar"><div class="container nav"><a class="brand" href="index.html"><span class="brand-mark">ر</span><span>أكاديمية رشيد<small>للقرآن الكريم والعلوم الشرعية</small></span></a><a class="btn btn-primary" href="login.html">تسجيل الدخول</a></div></header>
-<main class="page"><div class="container reg"><h1 class="page-title">أكمل بيانات التسجيل</h1><p class="muted">بعد اختيار ما تريد دراسته، أكمل بيانات الطالب لإعداد طلب التسجيل.</p>
-<div class="choice-summary"><h2>اختياراتك التعليمية</h2><div id="summary"><div class="empty">لم تصل اختيارات تعليمية إلى صفحة التسجيل بعد. ارجع إلى صفحة الأكاديمية واختر البرنامج والمواد أو المسارات.</div></div><a class="btn" href="index.html">تعديل / إضافة اختيارات</a></div>
-<div class="panel"><form id="academyRegistration"><input type="text" name="_honey" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off"><div class="form-grid">
-<div class="field"><label>الاسم الكامل</label><input id="fullName" required placeholder="اكتب الاسم الكامل"></div><div class="field"><label>العمر</label><input id="age" required type="number" min="4" max="100" placeholder="العمر"></div>
-<div class="field"><label>الدولة / المدينة</label><input id="country" required placeholder="مثال: الرياض - السعودية"></div><div class="field"><label>رقم واتساب</label><input id="whatsapp" required inputmode="tel" placeholder="مثال: +9665xxxxxxxx"></div>
-<div class="field"><label>الوقت المفضل</label><select id="time" required><option value="">اختر الوقت</option><option>صباحًا</option><option>مساءً</option><option>مرن</option></select></div>
-<div class="field"><label>التسجيل لـ</label><select id="studentType"><option>نفسي</option><option>ابني / ابنتي</option><option>أكثر من طالب</option></select></div></div>
-<div class="field" style="margin-top:18px"><label>ملاحظات أو هدف التعلم</label><textarea id="notes" rows="4" placeholder="أي ملاحظات تساعدنا على فهم احتياج الطالب..."></textarea></div>
-<div class="actions" style="margin-top:18px"><button class="btn btn-primary" id="registrationSubmit" type="submit">إرسال طلب التسجيل</button><a class="btn" href="index.html">العودة للاختيارات</a></div>
-<div id="registrationSuccess" class="notice hide" style="margin-top:12px">✓ تم إرسال طلب التسجيل بنجاح.</div><div id="registrationError" class="notice hide" style="margin-top:12px">تعذر إرسال الطلب الآن. حاول مرة أخرى.</div>
-</form></div></div></main>
-<script>
-(function(){let arr=[];try{arr=JSON.parse(sessionStorage.getItem('rasheedStudySelections')||'[]')}catch(e){}
-const q=new URLSearchParams(location.search).get('track');if(q)arr.push({key:'quran',title:'القرآن الكريم والعلوم الشرعية',tracks:[q]});
-window.rasheedStudySelections=arr; const box=document.getElementById('summary');if(arr.length)box.innerHTML=arr.map(x=>'<div class="sum-item"><strong>'+x.title+'</strong><span>'+[x.system,x.stage,x.grade,x.branch].filter(Boolean).join(' ← ')+(x.subjects?.length?'<br>'+x.subjects.join(' • '):'')+(x.tracks?.length?'<br>'+x.tracks.join(' • '):'')+'</span></div>').join('');
+<body>
 
-})();
-</script><script src="assets/js/app.js"></script>
+<header class="topbar">
+  <div class="nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">ر</span>
+      <span>أكاديمية رشيد<small>للقرآن الكريم والعلوم الشرعية</small></span>
+    </a>
+    <a class="btn btn-primary" href="login.html">تسجيل الدخول</a>
+  </div>
+</header>
+
+<main class="page">
+  <div class="reg">
+    <h1 class="page-title">أكمل بيانات التسجيل</h1>
+    <p class="muted">أكمل بيانات الطالب بعد اختيار البرنامج أو المسار.</p>
+
+    <section class="choice-summary">
+      <h2>اختياراتك التعليمية</h2>
+      <div id="summary"><div class="empty">جارٍ تحميل اختياراتك...</div></div>
+      <a class="btn" href="index.html" style="margin-top:8px;width:100%">تعديل / إضافة اختيارات</a>
+    </section>
+
+    <section class="panel">
+      <form id="academyRegistration" novalidate>
+        <input type="text" name="_honey" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+
+        <div class="form-grid">
+          <div class="field"><label for="fullName">الاسم الكامل</label><input id="fullName" required placeholder="اكتب الاسم الكامل"></div>
+          <div class="field"><label for="age">العمر</label><input id="age" required type="number" min="4" max="100" placeholder="العمر"></div>
+          <div class="field"><label for="country">الدولة / المدينة</label><input id="country" required placeholder="مثال: الرياض - السعودية"></div>
+          <div class="field"><label for="whatsapp">رقم واتساب</label><input id="whatsapp" required inputmode="tel" placeholder="مثال: +9665xxxxxxxx"></div>
+          <div class="field"><label for="time">الوقت المفضل</label><select id="time" required><option value="">اختر الوقت</option><option>صباحًا</option><option>مساءً</option><option>مرن</option></select></div>
+          <div class="field"><label for="studentType">التسجيل لـ</label><select id="studentType"><option>نفسي</option><option>ابني / ابنتي</option><option>أكثر من طالب</option></select></div>
+        </div>
+
+        <div class="field" style="margin-top:16px">
+          <label for="notes">ملاحظات أو هدف التعلم</label>
+          <textarea id="notes" rows="4" placeholder="أي ملاحظات تساعدنا على فهم احتياج الطالب..."></textarea>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" id="registrationSubmit" type="submit">إرسال طلب التسجيل</button>
+          <a class="btn" href="index.html">العودة للاختيارات</a>
+        </div>
+
+        <div id="registrationSuccess" class="notice hide">✓ تم إرسال طلب التسجيل بنجاح.</div>
+        <div id="registrationError" class="notice error hide">تعذر إرسال الطلب الآن. حاول مرة أخرى.</div>
+      </form>
+    </section>
+  </div>
+</main>
+
 <script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function () {
-    navigator.serviceWorker.register("./sw.js").catch(function () {});
-  });
-}
+(function () {
+  "use strict";
+
+  var SUPABASE_URL = "https://crnlfpuipepolflqcwuo.supabase.co";
+  var SUPABASE_PUBLISHABLE_KEY = "sb_publishable_bW_x_9cHxqhuxkYdZ-g4kQ_3UAukGRV";
+  var selections = [];
+
+  function safeParseSelections() {
+    var rows = [];
+    try {
+      rows = JSON.parse(window.sessionStorage.getItem("rasheedStudySelections") || "[]");
+      if (!Array.isArray(rows)) rows = [];
+    } catch (e) {
+      rows = [];
+    }
+
+    var params;
+    var track = "";
+    try {
+      params = new URLSearchParams(window.location.search);
+      track = params.get("track") || "";
+    } catch (e) {}
+
+    if (track) {
+      var exists = false;
+      for (var i = 0; i < rows.length; i++) {
+        if (rows[i] && rows[i].key === "quran" && rows[i].tracks && rows[i].tracks.indexOf(track) !== -1) {
+          exists = true;
+          break;
+        }
+      }
+      if (!exists) rows.push({key:"quran", title:"القرآن الكريم والعلوم الشرعية", tracks:[track]});
+    }
+    return rows;
+  }
+
+  function esc(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+  }
+
+  function renderSummary() {
+    var box = document.getElementById("summary");
+    if (!box) return;
+    if (!selections.length) {
+      box.innerHTML = '<div class="empty">لم تصل اختيارات تعليمية إلى صفحة التسجيل بعد. ارجع إلى صفحة الأكاديمية واختر البرنامج والمواد أو المسارات.</div>';
+      return;
+    }
+
+    var html = "";
+    for (var i = 0; i < selections.length; i++) {
+      var x = selections[i] || {};
+      var route = [];
+      if (x.system) route.push(x.system);
+      if (x.stage) route.push(x.stage);
+      if (x.grade) route.push(x.grade);
+      if (x.branch) route.push(x.branch);
+
+      var details = route.join(" ← ");
+      if (x.subjects && x.subjects.length) details += (details ? "<br>" : "") + x.subjects.map(esc).join(" • ");
+      if (x.tracks && x.tracks.length) details += (details ? "<br>" : "") + x.tracks.map(esc).join(" • ");
+
+      html += '<div class="sum-item"><strong>' + esc(x.title || "اختيار تعليمي") + '</strong><span>' + details + '</span></div>';
+    }
+    box.innerHTML = html;
+  }
+
+  function legacyTrack() {
+    for (var i = 0; i < selections.length; i++) {
+      var x = selections[i];
+      if (x && x.key === "quran" && x.tracks && x.tracks.length) return x.tracks[0];
+    }
+    if (selections.length) return selections[0].title || selections[0].key || null;
+    return null;
+  }
+
+  selections = safeParseSelections();
+  window.rasheedStudySelections = selections;
+  renderSummary();
+
+  var form = document.getElementById("academyRegistration");
+  var submit = document.getElementById("registrationSubmit");
+  var successBox = document.getElementById("registrationSuccess");
+  var errorBox = document.getElementById("registrationError");
+
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      successBox.className = "notice hide";
+      errorBox.className = "notice error hide";
+
+      if (!form.checkValidity()) {
+        if (form.reportValidity) form.reportValidity();
+        return;
+      }
+
+      if (!selections.length) {
+        alert("اختر البرنامج والمواد أو المسارات أولًا، ثم عد إلى صفحة التسجيل.");
+        return;
+      }
+
+      var hp = form.querySelector('input[name="_honey"]');
+      if (hp && hp.value) return;
+
+      submit.disabled = true;
+      submit.textContent = "جارٍ إرسال الطلب...";
+
+      var payload = {
+        full_name: document.getElementById("fullName").value.trim(),
+        age: Number(document.getElementById("age").value || 0) || null,
+        country_city: document.getElementById("country").value.trim(),
+        whatsapp: document.getElementById("whatsapp").value.trim(),
+        preferred_time: document.getElementById("time").value,
+        registration_for: document.getElementById("studentType").value,
+        notes: document.getElementById("notes").value.trim(),
+        study_selections: selections,
+        status: "new",
+        track: legacyTrack(),
+        level: null
+      };
+
+      fetch(SUPABASE_URL + "/rest/v1/registrations", {
+        method: "POST",
+        headers: {
+          "apikey": SUPABASE_PUBLISHABLE_KEY,
+          "Authorization": "Bearer " + SUPABASE_PUBLISHABLE_KEY,
+          "Content-Type": "application/json",
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify(payload)
+      }).then(function (response) {
+        if (!response.ok) throw new Error("Supabase " + response.status);
+        try { window.sessionStorage.removeItem("rasheedStudySelections"); } catch (e) {}
+        successBox.className = "notice";
+        submit.style.display = "none";
+        if (successBox.scrollIntoView) successBox.scrollIntoView({behavior:"smooth", block:"center"});
+      }).catch(function (err) {
+        console.error("Academy registration error:", err);
+        errorBox.className = "notice error";
+        submit.disabled = false;
+        submit.textContent = "إرسال طلب التسجيل";
+      });
+    });
+  }
+
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("./sw.js").catch(function () {});
+    });
+  }
+})();
 </script>
-</body></html>
+</body>
+</html>
