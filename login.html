@@ -16,6 +16,13 @@
 .login-error{margin-top:14px;padding:13px;border-radius:14px;background:#fff1f1;color:#8f2d2d;border:1px solid #efb2b2}
 @media(max-width:600px){.role-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
+<link rel="manifest" href="manifest.webmanifest"/>
+<meta name="theme-color" content="#073d32"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<meta name="apple-mobile-web-app-title" content="أكاديمية رشيد"/>
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"/>
 </head>
 <body>
 <header class="topbar"><div class="container nav">
@@ -41,4 +48,12 @@
 </form></div>
 </div></main>
 <script src="assets/js/portal-login.js?v=1.0.0"></script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("./sw.js").catch(function () {});
+  });
+}
+</script>
 </body></html>

@@ -800,6 +800,13 @@ body.english .main-column,body.english .founder-sidebar{direction:ltr}
   }
 }
 </style>
+<link rel="manifest" href="manifest.webmanifest"/>
+<meta name="theme-color" content="#073d32"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<meta name="apple-mobile-web-app-title" content="أكاديمية رشيد"/>
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"/>
 </head>
 <body><header class="topbar">
 <div class="container nav">
@@ -943,6 +950,14 @@ body.english .main-column,body.english .founder-sidebar{direction:ltr}
     });
   });
 })();
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("./sw.js").catch(function () {});
+  });
+}
 </script>
 </body>
 </html>

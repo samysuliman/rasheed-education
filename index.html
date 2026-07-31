@@ -425,6 +425,13 @@ body.english .main-column,body.english .founder-sidebar{direction:ltr}
 .school-quick-actions .secondary{background:#fff;color:#0b755e}.school-quick-empty{grid-column:1/-1;padding:14px;border:1px dashed #cbdad4;border-radius:12px;color:#71827c;text-align:center}
 @media(max-width:700px){.school-quick-grid,.school-quick-subjects{grid-template-columns:1fr}.school-quick-panel{margin:14px 10px 0;padding:15px}}
 </style>
+<link rel="manifest" href="manifest.webmanifest"/>
+<meta name="theme-color" content="#073d32"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<meta name="apple-mobile-web-app-title" content="أكاديمية رشيد"/>
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"/>
 </head>
 <body><header class="topbar">
 <div class="container nav">
@@ -667,6 +674,14 @@ directTargets.forEach(([selector,key])=>{
   });
 });
 })();
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("./sw.js").catch(function () {});
+  });
+}
 </script>
 </body>
 </html>
