@@ -1016,6 +1016,62 @@ body{background:var(--ra-cream)!important;color:var(--ra-text)!important}.topbar
 }
 </style>
 
+
+<style id="home-v2-4-screen-focus">
+/* v2.4 — إظهار الشاشة الذكية بشكل أكمل خلف الطلاب، وإنزال البطاقات قليلًا */
+@media (min-width:1251px){
+
+  /* إظهار مساحة أكبر من أعلى صورة الفصل مع الحفاظ على الطلاب في المقدمة */
+  .ra-classroom{
+    height:210px !important;
+    overflow:hidden !important;
+  }
+
+  .ra-classroom img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    object-position:center 31% !important;
+  }
+
+  /* إنزال البطاقات عن صورة الفصل لزيادة الإحساس بعمق الخلفية */
+  .ra-program-grid{
+    margin-top:13px !important;
+  }
+
+  /* تعويض الزيادة الرأسية حتى يظل أسفل الصفحة قريبًا من الظهور عند 100% */
+  .ra-founder-photo{height:198px !important;}
+  .ra-login{min-height:404px !important;}
+  .ra-benefits{
+    margin-top:3px !important;
+    margin-bottom:3px !important;
+  }
+  .ra-benefit{padding:3px 6px !important;}
+  footer{padding:8px 22px !important;}
+  .footer-inner{min-height:30px !important;}
+
+  /* تحسين كتلة هوية الأكاديمية أعلى اليسار */
+  .topbar .brand{
+    width:260px !important;
+    min-width:260px !important;
+    grid-template-columns:50px minmax(0,1fr) !important;
+    column-gap:11px !important;
+  }
+  .topbar .brand img{
+    width:48px !important;
+    height:48px !important;
+  }
+  .topbar .brand strong{
+    font-size:18px !important;
+    line-height:1.08 !important;
+  }
+  .topbar .brand small{
+    font-size:9.5px !important;
+    margin-top:3px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="topbar"><div class="container nav"><div class="actions"><div class="lang"><button id="enBtn">EN</button><button class="active" id="arBtn">AR</button></div><a class="btn btn-gold" href="login.html"><span data-ar>تسجيل الدخول</span><span data-en>Sign In</span></a></div><nav class="navlinks"><a href="index.html"><span data-ar>الرئيسية</span><span data-en>Home</span></a><a href="quran.html"><span data-ar>مسارات القرآن</span><span data-en>Qur'an Paths</span></a><a href="quran.html#sciences"><span data-ar>العلوم الشرعية</span><span data-en>Islamic Sciences</span></a><a href="#programs"><span data-ar>البرامج</span><span data-en>Programs</span></a><a href="#founder"><span data-ar>عن المؤسس</span><span data-en>Founder</span></a></nav><a class="brand" href="index.html"><img alt="Rasheed Academy" src="assets/rasheed-academy-logo.png"/><span class="brand-copy"><strong data-ar>أكاديمية رشيد</strong><strong data-en>Rasheed Academy</strong><small data-ar>منصة تعليمية</small><small data-en>Educational Platform</small></span></a></div></header>
