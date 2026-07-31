@@ -947,6 +947,132 @@ body{background:var(--ra-cream)!important;color:var(--ra-text)!important}.topbar
 }
 </style>
 
+
+<style id="home-v2-1-polish">
+/* v2.1 — improve smart screen integration + clean academy identity in header */
+@media (min-width:1251px){
+
+  /* LEFT identity: give logo/name breathing room and prevent crowding */
+  .topbar .brand{
+    min-width:245px !important;
+    gap:10px !important;
+    align-items:center !important;
+  }
+  .topbar .brand img{
+    width:46px !important;
+    height:46px !important;
+    object-fit:contain !important;
+    flex:0 0 46px !important;
+  }
+  .topbar .brand-copy{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    justify-content:center !important;
+    line-height:1.05 !important;
+    min-width:0 !important;
+  }
+  .topbar .brand strong{
+    font-size:18px !important;
+    line-height:1.08 !important;
+    white-space:nowrap !important;
+  }
+  .topbar .brand small{
+    font-size:9px !important;
+    line-height:1.15 !important;
+    white-space:nowrap !important;
+    margin-top:2px !important;
+  }
+
+  /* Keep the header balanced after improving identity */
+  .topbar .nav{
+    grid-template-columns:280px minmax(420px,1fr) 280px !important;
+    gap:18px !important;
+  }
+
+  /* Classroom image: preserve current compact height */
+  .ra-classroom{
+    height:174px !important;
+    position:relative !important;
+    overflow:hidden !important;
+  }
+
+  /* Smart screen: larger, integrated, and visually attached to the back wall */
+  .ra-smart-screen{
+    position:absolute !important;
+    top:4px !important;
+    left:50% !important;
+    transform:translateX(-50%) !important;
+    width:48% !important;
+    height:78px !important;
+    padding:7px 9px !important;
+    border-radius:6px !important;
+    background:
+      linear-gradient(180deg,rgba(16,45,53,.98),rgba(7,27,33,.98)) !important;
+    border:3px solid #2d3f45 !important;
+    box-shadow:
+      0 3px 7px rgba(0,0,0,.28),
+      inset 0 0 0 1px rgba(255,255,255,.06) !important;
+    color:#fff !important;
+    z-index:2 !important;
+    direction:rtl !important;
+  }
+  .ra-smart-screen::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-5px;
+    transform:translateX(-50%);
+    width:36%;
+    height:5px;
+    background:#263a40;
+    border-radius:0 0 5px 5px;
+  }
+  .ra-smart-head{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:8px !important;
+    margin-bottom:6px !important;
+    font-size:8px !important;
+  }
+  .ra-smart-head b{
+    font-size:8.5px !important;
+    color:#f6f8f7 !important;
+  }
+  .ra-smart-head span{
+    font-size:6.5px !important;
+    color:#b9cbc6 !important;
+  }
+  .ra-smart-grid{
+    display:grid !important;
+    grid-template-columns:repeat(4,1fr) !important;
+    gap:5px !important;
+  }
+  .ra-smart-grid span{
+    min-height:36px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    padding:3px !important;
+    border-radius:4px !important;
+    font-size:6.8px !important;
+    line-height:1.15 !important;
+    text-align:center !important;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.08) !important;
+  }
+
+  /* Keep current program cards/footer proportions untouched */
+}
+
+/* English header alignment remains clean */
+@media (min-width:981px){
+  body.english .topbar .brand-copy{
+    align-items:flex-start !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="topbar"><div class="container nav"><div class="actions"><div class="lang"><button id="enBtn">EN</button><button class="active" id="arBtn">AR</button></div><a class="btn btn-gold" href="login.html"><span data-ar>تسجيل الدخول</span><span data-en>Sign In</span></a></div><nav class="navlinks"><a href="index.html"><span data-ar>الرئيسية</span><span data-en>Home</span></a><a href="quran.html"><span data-ar>مسارات القرآن</span><span data-en>Qur'an Paths</span></a><a href="quran.html#sciences"><span data-ar>العلوم الشرعية</span><span data-en>Islamic Sciences</span></a><a href="#programs"><span data-ar>البرامج</span><span data-en>Programs</span></a><a href="#founder"><span data-ar>عن المؤسس</span><span data-en>Founder</span></a></nav><a class="brand" href="index.html"><img alt="Rasheed Academy" src="assets/rasheed-academy-logo.png"/><span class="brand-copy"><strong data-ar>أكاديمية رشيد</strong><strong data-en>Rasheed Academy</strong><small data-ar>منصة تعليمية</small><small data-en>Educational Platform</small></span></a></div></header>
