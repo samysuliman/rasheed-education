@@ -1018,12 +1018,13 @@ body{background:var(--ra-cream)!important;color:var(--ra-text)!important}.topbar
 
 
 
-<style id="home-v2-6-compact-final">
-/* المطلوب: شاشة ذكية واضحة + صورة فصل أقل ارتفاعًا + 4 بطاقات أصغر وكاملة + لا زر دخول في الهيدر */
+
+<style id="home-v2-7-balanced-classroom">
 @media (min-width:1251px){
 
+  /* زيادة بسيطة لإظهار الطلاب بصورة طبيعية مع بقاء الشاشة واضحة */
   .ra-classroom{
-    height:198px !important;
+    height:214px !important;
     overflow:hidden !important;
     border-radius:18px !important;
   }
@@ -1034,16 +1035,17 @@ body{background:var(--ra-cream)!important;color:var(--ra-text)!important}.topbar
     object-position:center top !important;
   }
 
+  /* ضغط البطاقات رأسيًا لتعويض زيادة صورة الفصل */
   .ra-program-grid{
     gap:10px !important;
-    margin-top:8px !important;
+    margin-top:7px !important;
   }
   .ra-program{
     border-radius:14px !important;
     overflow:hidden !important;
   }
   .ra-program-visual{
-    height:86px !important;
+    height:78px !important;
   }
   .ra-program-visual img{
     width:100% !important;
@@ -1051,41 +1053,38 @@ body{background:var(--ra-cream)!important;color:var(--ra-text)!important}.topbar
     object-fit:contain !important;
   }
   .ra-program-body{
-    padding:7px 8px 8px !important;
+    padding:6px 8px 7px !important;
   }
   .ra-program h3{
-    margin:0 0 3px !important;
-    font-size:15px !important;
-    line-height:1.22 !important;
+    margin:0 0 2px !important;
+    font-size:14.5px !important;
+    line-height:1.18 !important;
   }
   .ra-program p{
     min-height:0 !important;
-    margin:0 0 4px !important;
-    font-size:10px !important;
-    line-height:1.25 !important;
+    margin:0 0 3px !important;
+    font-size:9.5px !important;
+    line-height:1.2 !important;
   }
   .ra-program-tag{
-    font-size:10px !important;
-    line-height:1.1 !important;
-    padding:4px 8px !important;
+    font-size:9.5px !important;
+    line-height:1.05 !important;
+    padding:4px 7px !important;
   }
 
-  .topbar .actions{
-    gap:0 !important;
-  }
+  .topbar .actions{gap:0 !important;}
 
-  /* ضغط رأسي بسيط لإبقاء شريط المزايا والفوتر ظاهرين عند 100% */
   .ra-benefits{
-    margin-top:7px !important;
-    margin-bottom:4px !important;
+    margin-top:6px !important;
+    margin-bottom:3px !important;
   }
   .ra-benefit{
-    padding-top:5px !important;
-    padding-bottom:5px !important;
+    padding-top:4px !important;
+    padding-bottom:4px !important;
   }
   footer{
-    padding-top:8px !important;
-    padding-bottom:8px !important;
+    padding-top:7px !important;
+    padding-bottom:7px !important;
   }
 }
 </style>
