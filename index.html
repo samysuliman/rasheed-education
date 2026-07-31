@@ -1017,69 +1017,15 @@ body{background:var(--ra-cream)!important;color:var(--ra-text)!important}.topbar
 </style>
 
 
-<style id="home-v2-4-screen-focus">
-/* v2.4 — إظهار الشاشة الذكية بشكل أكمل خلف الطلاب، وإنزال البطاقات قليلًا */
+
+<style id="home-v2-6-compact-final">
+/* المطلوب: شاشة ذكية واضحة + صورة فصل أقل ارتفاعًا + 4 بطاقات أصغر وكاملة + لا زر دخول في الهيدر */
 @media (min-width:1251px){
 
-  /* إظهار مساحة أكبر من أعلى صورة الفصل مع الحفاظ على الطلاب في المقدمة */
   .ra-classroom{
-    height:210px !important;
+    height:198px !important;
     overflow:hidden !important;
-  }
-
-  .ra-classroom img{
-    width:100% !important;
-    height:100% !important;
-    object-fit:cover !important;
-    object-position:center 31% !important;
-  }
-
-  /* إنزال البطاقات عن صورة الفصل لزيادة الإحساس بعمق الخلفية */
-  .ra-program-grid{
-    margin-top:13px !important;
-  }
-
-  /* تعويض الزيادة الرأسية حتى يظل أسفل الصفحة قريبًا من الظهور عند 100% */
-  .ra-founder-photo{height:198px !important;}
-  .ra-login{min-height:404px !important;}
-  .ra-benefits{
-    margin-top:3px !important;
-    margin-bottom:3px !important;
-  }
-  .ra-benefit{padding:3px 6px !important;}
-  footer{padding:8px 22px !important;}
-  .footer-inner{min-height:30px !important;}
-
-  /* تحسين كتلة هوية الأكاديمية أعلى اليسار */
-  .topbar .brand{
-    width:260px !important;
-    min-width:260px !important;
-    grid-template-columns:50px minmax(0,1fr) !important;
-    column-gap:11px !important;
-  }
-  .topbar .brand img{
-    width:48px !important;
-    height:48px !important;
-  }
-  .topbar .brand strong{
-    font-size:18px !important;
-    line-height:1.08 !important;
-  }
-  .topbar .brand small{
-    font-size:9.5px !important;
-    margin-top:3px !important;
-  }
-}
-</style>
-
-
-<style id="home-v2-5-requested-adjustments">
-@media (min-width:1251px){
-
-  /* الشاشة الذكية: إظهار الجزء الكامل قدر الإمكان داخل نفس مساحة الواجهة */
-  .ra-classroom{
-    height:228px !important;
-    overflow:hidden !important;
+    border-radius:18px !important;
   }
   .ra-classroom img{
     width:100% !important;
@@ -1088,39 +1034,58 @@ body{background:var(--ra-cream)!important;color:var(--ra-text)!important}.topbar
     object-position:center top !important;
   }
 
-  /* البطاقات الأربع: أصغر قليلًا وتظل كاملة */
   .ra-program-grid{
     gap:10px !important;
-    margin-top:10px !important;
+    margin-top:8px !important;
   }
   .ra-program{
-    border-radius:15px !important;
+    border-radius:14px !important;
+    overflow:hidden !important;
   }
   .ra-program-visual{
-    height:102px !important;
+    height:86px !important;
+  }
+  .ra-program-visual img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:contain !important;
   }
   .ra-program-body{
-    padding:10px 9px 9px !important;
+    padding:7px 8px 8px !important;
   }
   .ra-program h3{
-    margin:0 0 5px !important;
-    font-size:16px !important;
-    line-height:1.28 !important;
+    margin:0 0 3px !important;
+    font-size:15px !important;
+    line-height:1.22 !important;
   }
   .ra-program p{
     min-height:0 !important;
-    margin:0 0 5px !important;
-    font-size:11px !important;
-    line-height:1.35 !important;
+    margin:0 0 4px !important;
+    font-size:10px !important;
+    line-height:1.25 !important;
   }
   .ra-program-tag{
-    font-size:10.5px !important;
-    padding:5px 9px !important;
+    font-size:10px !important;
+    line-height:1.1 !important;
+    padding:4px 8px !important;
   }
 
-  /* بعد حذف زر الدخول يبقى محول اللغة وحده مرتبًا في الهيدر */
   .topbar .actions{
     gap:0 !important;
+  }
+
+  /* ضغط رأسي بسيط لإبقاء شريط المزايا والفوتر ظاهرين عند 100% */
+  .ra-benefits{
+    margin-top:7px !important;
+    margin-bottom:4px !important;
+  }
+  .ra-benefit{
+    padding-top:5px !important;
+    padding-bottom:5px !important;
+  }
+  footer{
+    padding-top:8px !important;
+    padding-bottom:8px !important;
   }
 }
 </style>
