@@ -1,0 +1,22 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>التسجيل | أكاديمية رشيد</title><link rel="stylesheet" href="assets/css/styles.css">
+<style>.reg{max-width:900px;margin:auto}.choice-summary{margin:18px 0;padding:18px;border:1px solid #d6e4de;border-radius:18px;background:#f5fbf8}.choice-summary h2{margin-top:0}.sum-item{padding:12px;margin:8px 0;border-radius:12px;background:white;border:1px solid #dce8e3}.sum-item strong{display:block;color:#075a48}.empty{color:#687b74}.actions{display:flex;gap:10px;flex-wrap:wrap}.actions a,.actions button{flex:1;min-width:200px}.phase-note{margin-top:14px;padding:12px;border-radius:12px;background:#eef5ff;border:1px solid #cedff5;font-size:13px;color:#40566f}textarea{width:100%;padding:12px;border:1px solid #cddbd5;border-radius:12px;font:inherit}</style></head>
+<body><header class="topbar"><div class="container nav"><a class="brand" href="index.html"><span class="brand-mark">ر</span><span>أكاديمية رشيد<small>للقرآن الكريم والعلوم الشرعية</small></span></a><a class="btn btn-primary" href="login.html">تسجيل الدخول</a></div></header>
+<main class="page"><div class="container reg"><h1 class="page-title">أكمل بيانات التسجيل</h1><p class="muted">بعد اختيار ما تريد دراسته، أكمل بيانات الطالب لإعداد طلب التسجيل.</p>
+<div class="choice-summary"><h2>اختياراتك التعليمية</h2><div id="summary"><div class="empty">لم تصل اختيارات تعليمية إلى صفحة التسجيل بعد. ارجع إلى صفحة الأكاديمية واختر البرنامج والمواد أو المسارات.</div></div><a class="btn" href="index.html">تعديل / إضافة اختيارات</a></div>
+<div class="panel"><form id="academyRegistration"><input type="text" name="_honey" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off"><div class="form-grid">
+<div class="field"><label>الاسم الكامل</label><input id="fullName" required placeholder="اكتب الاسم الكامل"></div><div class="field"><label>العمر</label><input id="age" required type="number" min="4" max="100" placeholder="العمر"></div>
+<div class="field"><label>الدولة / المدينة</label><input id="country" required placeholder="مثال: الرياض - السعودية"></div><div class="field"><label>رقم واتساب</label><input id="whatsapp" required inputmode="tel" placeholder="مثال: +9665xxxxxxxx"></div>
+<div class="field"><label>الوقت المفضل</label><select id="time" required><option value="">اختر الوقت</option><option>صباحًا</option><option>مساءً</option><option>مرن</option></select></div>
+<div class="field"><label>التسجيل لـ</label><select id="studentType"><option>نفسي</option><option>ابني / ابنتي</option><option>أكثر من طالب</option></select></div></div>
+<div class="field" style="margin-top:18px"><label>ملاحظات أو هدف التعلم</label><textarea id="notes" rows="4" placeholder="أي ملاحظات تساعدنا على فهم احتياج الطالب..."></textarea></div>
+<div class="actions" style="margin-top:18px"><button class="btn btn-primary" id="registrationSubmit" type="submit">إرسال طلب التسجيل</button><a class="btn" href="index.html">العودة للاختيارات</a></div>
+<div id="registrationSuccess" class="notice hide" style="margin-top:12px">✓ تم إرسال طلب التسجيل بنجاح.</div><div id="registrationError" class="notice hide" style="margin-top:12px">تعذر إرسال الطلب الآن. حاول مرة أخرى.</div>
+</form></div></div></main>
+<script>
+(function(){let arr=[];try{arr=JSON.parse(sessionStorage.getItem('rasheedStudySelections')||'[]')}catch(e){}
+const q=new URLSearchParams(location.search).get('track');if(q)arr.push({key:'quran',title:'القرآن الكريم والعلوم الشرعية',tracks:[q]});
+window.rasheedStudySelections=arr; const box=document.getElementById('summary');if(arr.length)box.innerHTML=arr.map(x=>'<div class="sum-item"><strong>'+x.title+'</strong><span>'+[x.system,x.stage,x.grade,x.branch].filter(Boolean).join(' ← ')+(x.subjects?.length?'<br>'+x.subjects.join(' • '):'')+(x.tracks?.length?'<br>'+x.tracks.join(' • '):'')+'</span></div>').join('');
+
+})();
+</script><script src="assets/js/app.js"></script></body></html>
