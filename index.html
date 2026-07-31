@@ -440,6 +440,64 @@ body{background:var(--ra-cream)!important;color:var(--ra-text)!important}.topbar
 .ra-login{padding:34px 28px;background:linear-gradient(150deg,#073d32,#003c31);color:#fff;min-height:680px}.ra-login h2{font-size:24px;text-align:center;margin:10px 0 6px}.ra-login-sub{text-align:center;color:#dcebe6;margin:0 0 24px}.ra-role-title{display:block;font-size:12px;color:#f5d282;margin-bottom:8px}.ra-role-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:16px}.ra-role-grid input{position:absolute;opacity:0;pointer-events:none}.ra-role-grid label{display:grid;place-items:center;min-height:45px;border:1px solid rgba(255,255,255,.25);border-radius:10px;font-size:12px;cursor:pointer}.ra-role-grid input:checked+label{background:var(--ra-gold);color:#16372f;border-color:var(--ra-gold);font-weight:900}.ra-field{margin-bottom:16px}.ra-field input{width:100%;height:56px;border:1.5px solid var(--ra-gold);border-radius:15px;padding:0 16px;background:#fff;color:#1d342e;font-size:15px;outline:none}.ra-login-row{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:#f2d176;margin:2px 0 18px}.ra-login-btn{width:100%;height:54px;border:0;border-radius:13px;background:linear-gradient(180deg,#eab13d,#d89b20);color:#17382f;font-weight:900;font-size:18px;cursor:pointer}.ra-login-error{margin-top:12px;padding:10px;border:1px solid #e7b7b7;border-radius:10px;background:#fff0f0;color:#8f2d2d;font-size:13px}.ra-separator{display:flex;align-items:center;gap:10px;margin:25px 0;color:#d4dfda;font-size:12px}.ra-separator:before,.ra-separator:after{content:"";height:1px;flex:1;background:rgba(255,255,255,.25)}.ra-alt-btn{display:flex;align-items:center;justify-content:center;gap:9px;height:48px;border:1px solid rgba(255,255,255,.35);border-radius:12px;margin-top:10px;color:#fff;font-weight:700}.ra-register{text-align:center;margin-top:25px;font-size:13px}.ra-register a{color:var(--ra-gold);font-weight:900}
 .ra-benefits{width:min(1500px,calc(100% - 34px));margin:24px auto 30px;background:#fff;border:1px solid var(--ra-border);border-radius:22px;display:grid;grid-template-columns:repeat(4,1fr);box-shadow:0 8px 22px rgba(5,56,46,.05);overflow:hidden}.ra-benefit{padding:23px 18px;text-align:center;border-inline-start:1px solid #eadfc7}.ra-benefit:first-child{border-inline-start:0}.ra-benefit-icon{font-size:31px;margin-bottom:6px}.ra-benefit b{display:block;font-size:20px;color:var(--ra-green);margin-bottom:5px}.ra-benefit span{font-size:12.5px;color:var(--ra-muted);line-height:1.55}.cards-only-main{display:none!important}footer{margin-top:0!important}body.english .ra-home,body.english .ra-benefits{direction:ltr}body.english .ra-founder,body.english .ra-center,body.english .ra-login{direction:ltr}body.english .ra-founder-list{text-align:left}
 @media(max-width:1250px){.ra-home{grid-template-columns:290px minmax(0,1fr) 310px;gap:16px}.ra-founder-photo{height:290px}.ra-login{padding:28px 20px}.ra-program-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:980px){.ra-home{grid-template-columns:1fr}.ra-founder{order:2;display:grid;grid-template-columns:260px 1fr}.ra-founder-photo{height:100%}.ra-founder-body{padding:25px}.ra-founder-badge{transform:none;margin:0 0 10px}.ra-center{order:1}.ra-login{order:3;min-height:0}.ra-benefits{grid-template-columns:repeat(2,1fr)}.ra-classroom{height:300px}}@media(max-width:680px){.container{width:calc(100% - 14px)!important}.topbar{position:relative!important}.nav{min-height:auto!important;padding:9px 0!important;flex-wrap:wrap}.brand{flex:1}.brand img{width:54px!important;height:54px!important}.brand strong{font-size:18px!important}.brand small{font-size:10px!important}.actions{width:auto!important}.navlinks{display:none!important}.ra-home{width:calc(100% - 14px);margin-top:10px;gap:12px}.ra-identity{padding:5px 0 12px}.ra-identity-logo{width:250px;max-width:80%}.ra-classroom{height:190px;border-radius:16px}.ra-program-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}.ra-program-visual{height:92px}.ra-program-body{padding:11px 8px 10px}.ra-program h3{font-size:14px}.ra-program p{display:none}.ra-program-tag{font-size:10px;padding:5px 7px;margin-top:7px}.ra-founder{display:block}.ra-founder-photo{height:320px}.ra-founder h2{font-size:25px}.ra-login{padding:24px 16px;border-radius:18px}.ra-role-grid{grid-template-columns:repeat(2,1fr)}.ra-benefits{width:calc(100% - 14px);grid-template-columns:1fr 1fr;margin-top:12px}.ra-benefit{padding:17px 8px}.ra-benefit b{font-size:16px}.ra-benefit span{font-size:11px}}
+
+/* v1.1 — desktop first-view compaction: visual-only, no functional changes */
+@media (min-width:981px){
+  .nav{min-height:72px!important}
+  .brand img{width:56px!important;height:56px!important}
+  .brand strong{font-size:21px!important}
+  .ra-home{margin-top:16px;grid-template-columns:296px minmax(0,1fr) 306px;gap:20px}
+  .ra-founder-photo{height:270px}
+  .ra-founder-body{padding:0 20px 20px}
+  .ra-founder-badge{transform:translateY(-16px);padding:7px 19px}
+  .ra-founder h2{font-size:25px;margin:0 0 2px}
+  .ra-founder-role{font-size:17px;margin-bottom:14px}
+  .ra-founder-list{gap:10px}
+  .ra-founder-list li{font-size:13.5px;line-height:1.45}
+  .ra-founder-signature{margin-top:16px;font-size:23px}
+
+  .ra-identity{height:118px;padding:0 8px 8px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .ra-identity-logo{width:190px;max-width:190px;margin:0;display:block;mix-blend-mode:multiply}
+  .ra-classroom{height:215px;border-radius:18px}
+  .ra-program-grid{gap:10px;margin-top:12px}
+  .ra-program{border-radius:15px}
+  .ra-program-visual{height:96px}
+  .ra-program-body{padding:10px 9px 10px}
+  .ra-program h3{font-size:15.5px;line-height:1.35;margin-bottom:5px}
+  .ra-program p{font-size:11px;line-height:1.45;min-height:47px}
+  .ra-program-tag{margin-top:7px;padding:5px 8px;font-size:10.5px}
+
+  .ra-login{padding:24px 22px;min-height:566px}
+  .ra-login h2{font-size:21px;margin:4px 0 4px}
+  .ra-login-sub{font-size:13px;margin-bottom:16px}
+  .ra-role-grid{margin-bottom:12px}
+  .ra-role-grid label{min-height:39px}
+  .ra-field{margin-bottom:12px}
+  .ra-field input{height:48px;border-radius:12px}
+  .ra-login-row{margin:0 0 13px}
+  .ra-login-btn{height:48px;font-size:16px}
+  .ra-separator{margin:18px 0}
+  .ra-alt-btn{height:43px;margin-top:8px}
+  .ra-register{margin-top:18px}
+
+  .ra-benefits{margin-top:15px;margin-bottom:22px}
+  .ra-benefit{padding:15px 12px}
+  .ra-benefit-icon{font-size:25px;margin-bottom:3px}
+  .ra-benefit b{font-size:17px;margin-bottom:3px}
+  .ra-benefit span{font-size:11.5px}
+}
+@media (min-width:981px) and (max-width:1250px){
+  .ra-home{grid-template-columns:270px minmax(0,1fr) 286px;gap:14px}
+  .ra-founder-photo{height:245px}
+  .ra-identity{height:105px}
+  .ra-identity-logo{width:170px;max-width:170px}
+  .ra-classroom{height:195px}
+  .ra-program-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .ra-program-visual{height:84px}
+  .ra-program p{display:none}
+  .ra-login{padding:20px 17px;min-height:530px}
+}
+
 </style></head>
 <body>
 <header class="topbar"><div class="container nav"><a class="brand" href="index.html"><img alt="Rasheed Academy" src="assets/rasheed-academy-logo.png"/><span class="brand-copy"><strong data-ar>أكاديمية رشيد</strong><strong data-en>Rasheed Academy</strong><small data-ar>منصة تعليمية</small><small data-en>Educational Platform</small></span></a><nav class="navlinks"><a href="index.html"><span data-ar>الرئيسية</span><span data-en>Home</span></a><a href="quran.html"><span data-ar>مسارات القرآن</span><span data-en>Qur'an Paths</span></a><a href="quran.html#sciences"><span data-ar>العلوم الشرعية</span><span data-en>Islamic Sciences</span></a><a href="#programs"><span data-ar>البرامج</span><span data-en>Programs</span></a><a href="#founder"><span data-ar>عن المؤسس</span><span data-en>Founder</span></a></nav><div class="actions"><div class="lang"><button id="enBtn">EN</button><button class="active" id="arBtn">AR</button></div><a class="btn btn-gold" href="login.html"><span data-ar>تسجيل الدخول</span><span data-en>Sign In</span></a></div></div></header>
