@@ -812,12 +812,158 @@ body{background:var(--ra-cream)!important;color:var(--ra-text)!important}.topbar
 }
 </style>
 
+
+<style id="home-v2-final-fit">
+@media (min-width:1251px){
+  .topbar .nav{min-height:54px!important}
+  .ra-home{margin-top:2px!important;gap:12px!important}
+
+  .ra-classroom{
+    height:174px!important;
+    position:relative!important;
+    overflow:hidden!important;
+  }
+
+  .ra-smart-screen{
+    position:absolute;
+    top:7px;
+    left:50%;
+    transform:translateX(-50%);
+    width:42%;
+    height:64px;
+    padding:6px 8px;
+    border-radius:7px;
+    background:linear-gradient(145deg,#102f38,#071e25);
+    border:2px solid #253c43;
+    box-shadow:0 4px 12px rgba(0,0,0,.25);
+    color:#fff;
+    z-index:2;
+    direction:rtl;
+    overflow:hidden;
+  }
+  .ra-smart-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:8px;
+    font-size:8px;
+    margin-bottom:5px;
+  }
+  .ra-smart-head span{font-size:6px;opacity:.75}
+  .ra-smart-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:4px;
+  }
+  .ra-smart-grid span{
+    display:grid;
+    place-items:center;
+    min-height:30px;
+    border-radius:4px;
+    background:rgba(18,116,91,.78);
+    font-size:6.5px;
+    text-align:center;
+    line-height:1.15;
+    padding:2px;
+  }
+  .ra-smart-grid span:nth-child(2){background:rgba(40,91,154,.78)}
+  .ra-smart-grid span:nth-child(3){background:rgba(102,63,140,.80)}
+  .ra-smart-grid span:nth-child(4){background:rgba(194,124,8,.82)}
+
+  .ra-program-grid{
+    margin-top:7px!important;
+    gap:10px!important;
+  }
+  .ra-program{
+    min-height:196px!important;
+    border-radius:16px!important;
+  }
+  .ra-program-visual{
+    height:104px!important;
+    background:#fff!important;
+  }
+  .ra-program-visual img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+    object-position:center!important;
+  }
+  .ra-program-body{padding:8px 8px 7px!important}
+  .ra-program h3{
+    font-size:15px!important;
+    line-height:1.3!important;
+    margin-bottom:4px!important;
+  }
+  .ra-program p{display:none!important}
+  .ra-program-tag{
+    margin-top:4px!important;
+    padding:4px 8px!important;
+    font-size:10px!important;
+  }
+
+  .ra-founder-photo{height:205px!important}
+  .ra-founder-body{padding-bottom:7px!important}
+  .ra-founder-role{margin-bottom:5px!important}
+  .ra-founder-list{gap:3px!important}
+  .ra-founder-list li{line-height:1.22!important}
+
+  .ra-login{
+    min-height:416px!important;
+    padding:9px 13px!important;
+  }
+  .ra-login-logo{margin-bottom:3px!important}
+  .ra-login-logo img{width:64px!important;height:48px!important}
+  .ra-login h2{font-size:18px!important}
+  .ra-login-sub{margin-bottom:5px!important}
+  .ra-role-grid{margin-bottom:5px!important}
+  .ra-role-grid label{min-height:29px!important}
+  .ra-field{margin-bottom:5px!important}
+  .ra-field input{height:37px!important}
+  .ra-login-btn{height:37px!important}
+  .ra-separator{margin:6px 0!important}
+  .ra-alt-btn{height:33px!important}
+  .ra-register{margin-top:5px!important}
+
+  .ra-benefits{
+    margin-top:4px!important;
+    margin-bottom:4px!important;
+    min-height:57px!important;
+  }
+  .ra-benefit{padding:4px 6px!important}
+  .ra-benefit-icon{font-size:16px!important}
+  .ra-benefit b{font-size:13px!important}
+  .ra-benefit span{font-size:8.5px!important;line-height:1.2!important}
+
+  footer{
+    padding:10px 22px!important;
+    margin-top:0!important;
+  }
+  .footer-inner{min-height:34px!important}
+  .footer-inner strong{font-size:13px!important}
+  .footer-inner small,.footer-links{font-size:11px!important}
+}
+@media (max-width:1250px){
+  .ra-smart-screen{display:none!important}
+}
+</style>
+
 </head>
 <body>
 <header class="topbar"><div class="container nav"><div class="actions"><div class="lang"><button id="enBtn">EN</button><button class="active" id="arBtn">AR</button></div><a class="btn btn-gold" href="login.html"><span data-ar>تسجيل الدخول</span><span data-en>Sign In</span></a></div><nav class="navlinks"><a href="index.html"><span data-ar>الرئيسية</span><span data-en>Home</span></a><a href="quran.html"><span data-ar>مسارات القرآن</span><span data-en>Qur'an Paths</span></a><a href="quran.html#sciences"><span data-ar>العلوم الشرعية</span><span data-en>Islamic Sciences</span></a><a href="#programs"><span data-ar>البرامج</span><span data-en>Programs</span></a><a href="#founder"><span data-ar>عن المؤسس</span><span data-en>Founder</span></a></nav><a class="brand" href="index.html"><img alt="Rasheed Academy" src="assets/rasheed-academy-logo.png"/><span class="brand-copy"><strong data-ar>أكاديمية رشيد</strong><strong data-en>Rasheed Academy</strong><small data-ar>منصة تعليمية</small><small data-en>Educational Platform</small></span></a></div></header>
 <main><section class="ra-home">
 <aside class="ra-founder" id="founder"><img class="ra-founder-photo" src="assets/images/home/founder-samy.jpeg" alt="سامي سليمان رشيد"/><div class="ra-founder-body"><span class="ra-founder-badge"><span data-ar>بيانات المؤسس</span><span data-en>Founder Profile</span></span><h2><span data-ar>سامي سليمان رشيد</span><span data-en>Samy Suliman Rasheed</span></h2><p class="ra-founder-role"><span data-ar>المؤسس والمدير العام</span><span data-en>Founder & General Manager</span></p><ul class="ra-founder-list"><li>🎓 <b data-ar>خبير تربوي وتعليمي لأكثر من 20 عامًا</b><b data-en>Education professional with 20+ years of experience</b></li><li>▣ <b data-ar>مدرب معتمد ومطور مناهج</b><b data-en>Certified trainer and curriculum developer</b></li><li>📖 <b data-ar>مؤلف وباحث في التربية والعلوم الشرعية</b><b data-en>Author and researcher in education and Islamic sciences</b></li></ul></div></aside>
-<section class="ra-center"><div class="ra-classroom"><img src="assets/images/home/students-classroom.jpg" alt="طلاب يتعلمون في بيئة أكاديمية حديثة"/></div><div class="ra-program-grid" id="programs">
+<section class="ra-center"><div class="ra-classroom">
+<img src="assets/images/home/students-classroom.jpg" alt="طلاب يتعلمون في بيئة أكاديمية حديثة"/>
+<div class="ra-smart-screen" aria-hidden="true">
+  <div class="ra-smart-head"><b>أكاديمية رشيد</b><span>Rasheed Academy</span></div>
+  <div class="ra-smart-grid">
+    <span>📖 القرآن الكريم</span>
+    <span>⚙ العلوم الشرعية</span>
+    <span>🎓 البرامج التعليمية</span>
+    <span>📝 الواجبات</span>
+  </div>
+</div>
+</div><div class="ra-program-grid" id="programs">
 <a class="ra-program quran" data-program="quran" href="quran.html" role="button"><div class="ra-program-visual"><img src="assets/study-cards/quran-islamic-studies.png" alt="القرآن الكريم والعلوم الشرعية"/></div><div class="ra-program-body"><h3><span data-ar>القرآن الكريم<br>والعلوم الشرعية</span><span data-en>Qur'an & Islamic Studies</span></h3><p class="block" data-ar>تعلم القرآن والتجويد والحفظ والعلوم الشرعية والعربية.</p><p class="block" data-en>Qur'an, Tajweed, memorization, Islamic sciences and Arabic.</p><span class="ra-program-tag"><span data-ar>دراسة حرة ومرنة</span><span data-en>Flexible Study</span></span></div></a>
 <article class="ra-program saudi" data-program="saudi" role="button" tabindex="0"><div class="ra-program-visual"><img src="assets/study-cards/saudi-private-education.png" alt="التعليم الأهلي السعودي"/></div><div class="ra-program-body"><h3><span data-ar>التعليم الأهلي<br>السعودي</span><span data-en>Saudi Private Education</span></h3><p class="block" data-ar>المراحل والصفوف والمواد المقررة في المنهج السعودي.</p><p class="block" data-en>Saudi curriculum stages, grades and subjects.</p><span class="ra-program-tag"><span data-ar>ابتدائي - متوسط - ثانوي</span><span data-en>Primary - Middle - Secondary</span></span></div></article>
 <article class="ra-program global" data-program="global" role="button" tabindex="0"><div class="ra-program-visual"><img src="assets/study-cards/saudi-international-education.png" alt="التعليم العالمي السعودي"/></div><div class="ra-program-body"><h3><span data-ar>التعليم العالمي<br>السعودي</span><span data-en>Saudi International Education</span></h3><p class="block" data-ar>مناهج عالمية مع مواد الهوية الوطنية السعودية.</p><p class="block" data-en>International curricula with Saudi national identity subjects.</p><span class="ra-program-tag"><span data-ar>ابتدائي - متوسط - ثانوي</span><span data-en>Primary - Middle - Secondary</span></span></div></article>
