@@ -1117,8 +1117,8 @@ body.english .brand-lang[data-en]{display:flex}
 <style id="dual-header-logo-final">
 /* شعار مستطيل مستقل لكل لغة في الهيدر فقط */
 .topbar .brand.brand-image-only{
-  width:520px !important;
-  min-width:520px !important;
+  width:390px !important;
+  min-width:390px !important;
   height:58px !important;
   display:flex !important;
   align-items:center !important;
@@ -1128,8 +1128,8 @@ body.english .brand-lang[data-en]{display:flex}
 }
 
 .topbar .brand.brand-image-only .header-logo{
-  width:510px !important;
-  height:72px !important;
+  width:385px !important;
+  height:56px !important;
   max-width:none !important;
   object-fit:contain !important;
   object-position:left center !important;
@@ -1179,6 +1179,16 @@ body.english .topbar .header-logo-en{
   .topbar .brand.brand-image-only .header-logo{
     width:180px !important;
     height:42px !important;
+  }
+}
+</style>
+
+
+<style id="students-body-position-fix">
+/* إظهار أجسام الطلاب قليلًا أكثر دون تغيير حجم الصورة أو بقية الواجهة */
+@media (min-width:1251px){
+  .ra-classroom img{
+    object-position:center 22% !important;
   }
 }
 </style>
