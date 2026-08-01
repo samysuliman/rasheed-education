@@ -1184,11 +1184,21 @@ body.english .topbar .header-logo-en{
 </style>
 
 
-<style id="students-body-more-visible">
-/* إظهار جزء أكبر قليلًا من أجسام الطلاب في صورة الفصل فقط */
-@media (min-width:1251px){
+<style id="classroom-full-image-fix">
+/* إظهار صورة الفصل كاملة: الطلاب والأيدي والطاولة */
+@media (min-width:981px){
+  .ra-classroom{
+    width:100% !important;
+    height:auto !important;
+    aspect-ratio:2 / 1 !important;
+    overflow:hidden !important;
+  }
   .ra-classroom img{
-    object-position:center 68% !important;
+    width:100% !important;
+    height:100% !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+    background:#f6f2e8 !important;
   }
 }
 </style>
