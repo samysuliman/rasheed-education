@@ -1113,9 +1113,82 @@ body.english .topbar .brand-copy [data-en]{
 body:not(.english) .brand-lang[data-ar]{display:flex}
 body.english .brand-lang[data-en]{display:flex}
 .brand-copy small{font-size:11px;font-weight:700}
-</style></head>
+</style>
+<style id="dual-header-logo-final">
+/* شعار مستطيل مستقل لكل لغة في الهيدر فقط */
+.topbar .brand.brand-image-only{
+  width:290px !important;
+  min-width:290px !important;
+  height:58px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  overflow:visible !important;
+  direction:ltr !important;
+}
+
+.topbar .brand.brand-image-only .header-logo{
+  width:285px !important;
+  height:56px !important;
+  max-width:none !important;
+  object-fit:contain !important;
+  object-position:left center !important;
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  padding:0 !important;
+  margin:0 !important;
+}
+
+body:not(.english) .topbar .header-logo-ar{
+  display:block !important;
+}
+body:not(.english) .topbar .header-logo-en{
+  display:none !important;
+}
+body.english .topbar .header-logo-ar{
+  display:none !important;
+}
+body.english .topbar .header-logo-en{
+  display:block !important;
+}
+
+/* إخفاء أي نص قديم داخل الشعار إن بقي من قواعد سابقة */
+.topbar .brand.brand-image-only .brand-copy{
+  display:none !important;
+}
+
+@media (max-width:980px){
+  .topbar .brand.brand-image-only{
+    width:220px !important;
+    min-width:220px !important;
+    height:50px !important;
+  }
+  .topbar .brand.brand-image-only .header-logo{
+    width:215px !important;
+    height:48px !important;
+  }
+}
+
+@media (max-width:680px){
+  .topbar .brand.brand-image-only{
+    width:185px !important;
+    min-width:185px !important;
+    height:44px !important;
+  }
+  .topbar .brand.brand-image-only .header-logo{
+    width:180px !important;
+    height:42px !important;
+  }
+}
+</style>
+
+</head>
 <body>
-<header class="topbar"><div class="container nav"><div class="actions"><div class="lang"><button id="enBtn">EN</button><button class="active" id="arBtn">AR</button></div></div><nav class="navlinks"><a href="index.html"><span data-ar="">الرئيسية</span><span data-en="">Home</span></a><a href="quran.html"><span data-ar="">مسارات القرآن</span><span data-en="">Qur'an Paths</span></a><a href="quran.html#sciences"><span data-ar="">العلوم الشرعية</span><span data-en="">Islamic Sciences</span></a><a href="#programs"><span data-ar="">البرامج</span><span data-en="">Programs</span></a><a href="#founder"><span data-ar="">عن المؤسس</span><span data-en="">Founder</span></a></nav><a class="brand" href="index.html"><img alt="Rasheed Academy" src="assets/rasheed-header-logo.png"/><span class="brand-copy"><span class="brand-lang" data-ar=""><strong>أكاديمية رشيد</strong><small>منصة تعليمية</small></span><span class="brand-lang" data-en=""><strong>Rasheed Academy</strong><small>Educational Platform</small></span></span></a></div></header>
+<header class="topbar"><div class="container nav"><div class="actions"><div class="lang"><button id="enBtn">EN</button><button class="active" id="arBtn">AR</button></div></div><nav class="navlinks"><a href="index.html"><span data-ar="">الرئيسية</span><span data-en="">Home</span></a><a href="quran.html"><span data-ar="">مسارات القرآن</span><span data-en="">Qur'an Paths</span></a><a href="quran.html#sciences"><span data-ar="">العلوم الشرعية</span><span data-en="">Islamic Sciences</span></a><a href="#programs"><span data-ar="">البرامج</span><span data-en="">Programs</span></a><a href="#founder"><span data-ar="">عن المؤسس</span><span data-en="">Founder</span></a></nav><a class="brand brand-image-only" href="index.html" aria-label="Rasheed Academy">
+  <img class="header-logo header-logo-ar" data-ar src="assets/rasheed-header-logo-ar.png" alt="أكاديمية رشيد - منصة تعليمية"/>
+  <img class="header-logo header-logo-en" data-en src="assets/rasheed-header-logo-en.png" alt="Rasheed Academy - Educational Platform"/>
+</a></div></header>
 <main><section class="ra-home">
 <aside class="ra-founder" id="founder"><img alt="سامي سليمان رشيد" class="ra-founder-photo" src="assets/images/home/founder-samy.jpeg"/><div class="ra-founder-body"><span class="ra-founder-badge"><span data-ar="">بيانات المؤسس</span><span data-en="">Founder Profile</span></span><h2><span data-ar="">سامي سليمان رشيد</span><span data-en="">Samy Suliman Rasheed</span></h2><p class="ra-founder-role"><span data-ar="">المؤسس والمدير العام</span><span data-en="">Founder &amp; General Manager</span></p><ul class="ra-founder-list"><li>🎓 <b data-ar="">خبير تربوي وتعليمي لأكثر من 20 عامًا</b><b data-en="">Education professional with 20+ years of experience</b></li><li>▣ <b data-ar="">مدرب معتمد ومطور مناهج</b><b data-en="">Certified trainer and curriculum developer</b></li><li>📖 <b data-ar="">مؤلف وباحث في التربية والعلوم الشرعية</b><b data-en="">Author and researcher in education and Islamic sciences</b></li></ul></div></aside>
 <section class="ra-center"><div class="ra-classroom">
