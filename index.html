@@ -1184,30 +1184,43 @@ body.english .topbar .header-logo-en{
 </style>
 
 
-<style id="classroom-full-ratio-final">
-/* عرض صورة الفصل كاملة من أولها إلى آخرها دون قص */
+<style id="classroom-approved-final">
+/* الشكل المعتمد لصورة الفصل: الصورة كاملة من أولها إلى آخرها */
 .ra-classroom{
   width:100% !important;
   height:auto !important;
   aspect-ratio:2 / 1 !important;
   overflow:hidden !important;
+  border-radius:18px !important;
 }
 .ra-classroom img{
   width:100% !important;
   height:100% !important;
-  object-fit:cover !important;
+  object-fit:contain !important;
   object-position:center center !important;
+  background:#f7f3eb !important;
 }
 
-/* إبقاء البطاقات أسفل الصورة بصورة طبيعية */
+/* مسافة مريحة بين الصورة والبطاقات الأربع */
 .ra-program-grid{
-  margin-top:12px !important;
+  margin-top:14px !important;
+}
+
+@media (max-width:980px){
+  .ra-classroom{
+    aspect-ratio:2 / 1 !important;
+    height:auto !important;
+  }
 }
 
 @media (max-width:680px){
   .ra-classroom{
     aspect-ratio:2 / 1 !important;
     height:auto !important;
+    border-radius:16px !important;
+  }
+  .ra-program-grid{
+    margin-top:10px !important;
   }
 }
 </style>
