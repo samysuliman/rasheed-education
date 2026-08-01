@@ -1225,6 +1225,113 @@ body.english .topbar .header-logo-en{
 }
 </style>
 
+
+<style id="mobile-final-polish">
+/* تحسينات الجوال فقط — دون تغيير نسخة الكمبيوتر */
+@media (max-width:680px){
+
+  /* 1) تكبير شعار الهيدر مع تقليل الفراغ حوله */
+  .topbar .nav{
+    min-height:64px !important;
+    padding:6px 0 !important;
+  }
+  .topbar .brand.brand-image-only{
+    width:245px !important;
+    min-width:245px !important;
+    height:54px !important;
+  }
+  .topbar .brand.brand-image-only .header-logo{
+    width:240px !important;
+    height:52px !important;
+    object-fit:contain !important;
+  }
+
+  /* 2) صورة الفصل بعرض كامل داخل العمود */
+  .ra-classroom{
+    width:100% !important;
+    border-radius:18px !important;
+  }
+
+  /* 3) فراغ أوضح بين صورة الفصل والبطاقات */
+  .ra-program-grid{
+    margin-top:16px !important;
+  }
+
+  /* 4) تقليل طول بطاقة المؤسس قليلًا */
+  .ra-founder-photo{
+    height:285px !important;
+    object-position:center 18% !important;
+  }
+  .ra-founder-body{
+    padding:20px 16px 22px !important;
+  }
+  .ra-founder-badge{
+    margin-bottom:8px !important;
+  }
+  .ra-founder h2{
+    font-size:24px !important;
+  }
+  .ra-founder-role{
+    font-size:17px !important;
+    margin-bottom:14px !important;
+  }
+  .ra-founder-list{
+    gap:10px !important;
+  }
+  .ra-founder-list li{
+    font-size:14px !important;
+    line-height:1.5 !important;
+  }
+
+  /* 5) تقليل طول بطاقة تسجيل الدخول */
+  .ra-login{
+    padding:22px 14px !important;
+  }
+  .ra-login-logo img{
+    width:84px !important;
+    height:64px !important;
+  }
+  .ra-login h2{
+    font-size:22px !important;
+    margin-top:6px !important;
+  }
+  .ra-login-sub{
+    margin-bottom:18px !important;
+  }
+  .ra-role-grid label{
+    min-height:42px !important;
+  }
+  .ra-field{
+    margin-bottom:12px !important;
+  }
+  .ra-field input{
+    height:52px !important;
+  }
+  .ra-login-btn{
+    height:50px !important;
+    margin-top:2px !important;
+  }
+  .ra-separator{
+    margin:18px 0 !important;
+  }
+  .ra-alt-btn{
+    height:46px !important;
+  }
+  .ra-register{
+    margin-top:18px !important;
+  }
+
+  /* 6) تكبير أيقونات شريط المميزات */
+  .ra-benefit-icon{
+    font-size:24px !important;
+    margin-bottom:5px !important;
+  }
+  .ra-benefit b{
+    font-size:17px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="topbar"><div class="container nav"><div class="actions"><div class="lang"><button id="enBtn">EN</button><button class="active" id="arBtn">AR</button></div></div><nav class="navlinks"><a href="index.html"><span data-ar="">الرئيسية</span><span data-en="">Home</span></a><a href="quran.html"><span data-ar="">مسارات القرآن</span><span data-en="">Qur'an Paths</span></a><a href="quran.html#sciences"><span data-ar="">العلوم الشرعية</span><span data-en="">Islamic Sciences</span></a><a href="#programs"><span data-ar="">البرامج</span><span data-en="">Programs</span></a><a href="#founder"><span data-ar="">عن المؤسس</span><span data-en="">Founder</span></a></nav><a class="brand brand-image-only" href="index.html" aria-label="Rasheed Academy">
