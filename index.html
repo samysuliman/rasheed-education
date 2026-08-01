@@ -1184,21 +1184,30 @@ body.english .topbar .header-logo-en{
 </style>
 
 
-<style id="classroom-full-image-fix">
-/* إظهار صورة الفصل كاملة: الطلاب والأيدي والطاولة */
-@media (min-width:981px){
+<style id="classroom-full-ratio-final">
+/* عرض صورة الفصل كاملة من أولها إلى آخرها دون قص */
+.ra-classroom{
+  width:100% !important;
+  height:auto !important;
+  aspect-ratio:2 / 1 !important;
+  overflow:hidden !important;
+}
+.ra-classroom img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+}
+
+/* إبقاء البطاقات أسفل الصورة بصورة طبيعية */
+.ra-program-grid{
+  margin-top:12px !important;
+}
+
+@media (max-width:680px){
   .ra-classroom{
-    width:100% !important;
-    height:auto !important;
     aspect-ratio:2 / 1 !important;
-    overflow:hidden !important;
-  }
-  .ra-classroom img{
-    width:100% !important;
-    height:100% !important;
-    object-fit:contain !important;
-    object-position:center center !important;
-    background:#f6f2e8 !important;
+    height:auto !important;
   }
 }
 </style>
@@ -1212,7 +1221,7 @@ body.english .topbar .header-logo-en{
 <main><section class="ra-home">
 <aside class="ra-founder" id="founder"><img alt="سامي سليمان رشيد" class="ra-founder-photo" src="assets/images/home/founder-samy.jpeg"/><div class="ra-founder-body"><span class="ra-founder-badge"><span data-ar="">بيانات المؤسس</span><span data-en="">Founder Profile</span></span><h2><span data-ar="">سامي سليمان رشيد</span><span data-en="">Samy Suliman Rasheed</span></h2><p class="ra-founder-role"><span data-ar="">المؤسس والمدير العام</span><span data-en="">Founder &amp; General Manager</span></p><ul class="ra-founder-list"><li>🎓 <b data-ar="">خبير تربوي وتعليمي لأكثر من 20 عامًا</b><b data-en="">Education professional with 20+ years of experience</b></li><li>▣ <b data-ar="">مدرب معتمد ومطور مناهج</b><b data-en="">Certified trainer and curriculum developer</b></li><li>📖 <b data-ar="">مؤلف وباحث في التربية والعلوم الشرعية</b><b data-en="">Author and researcher in education and Islamic sciences</b></li></ul></div></aside>
 <section class="ra-center"><div class="ra-classroom">
-<img alt="طلاب يتعلمون في بيئة أكاديمية حديثة" src="assets/images/home/students-classroom.jpg"/>
+<img alt="طلاب يتعلمون في بيئة أكاديمية حديثة" src="assets/images/home/students-classroom-full.png"/>
 </div>
 <div class="ra-program-grid" id="programs">
 <a class="ra-program quran" data-program="quran" href="quran.html" role="button"><div class="ra-program-visual"><img alt="القرآن الكريم والعلوم الشرعية" src="assets/study-cards/quran-islamic-studies.png"/></div><div class="ra-program-body"><h3><span data-ar="">القرآن الكريم<br/>والعلوم الشرعية</span><span data-en="">Qur'an &amp; Islamic Studies</span></h3><p class="block" data-ar="">تعلم القرآن والتجويد والحفظ والعلوم الشرعية والعربية.</p><p class="block" data-en="">Qur'an, Tajweed, memorization, Islamic sciences and Arabic.</p><span class="ra-program-tag"><span data-ar="">دراسة حرة ومرنة</span><span data-en="">Flexible Study</span></span></div></a>
