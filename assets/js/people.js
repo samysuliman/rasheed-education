@@ -22,7 +22,46 @@
  function applyUsernameMode(){const p=state.people.find(x=>x.id===currentPersonId),mode=$('usernameMode').value;if(!p||mode==='manual')return;const v=suggestedUsername(p,mode);if(v)$('accountForm').elements.username.value=v;}
  function openAccount(personId){currentPersonId=personId;const f=$('accountForm');f.reset();f.elements.person_id.value=personId;const a=accountFor(personId);$('usernameMode').value=a?.username?'manual':'auto';if(a){f.elements.username.value=a.username||'';f.elements.auth_user_id.value=a.auth_user_id||'';f.elements.account_status.value=a.account_status;f.elements.must_change_password.value=String(a.must_change_password);}else{f.elements.account_status.value='pending';f.elements.must_change_password.value='true';applyUsernameMode();}$('accountError').classList.add('hide');$('accountDialog').showModal();}
  function generatePassword(){const chars='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%';let out='';crypto.getRandomValues(new Uint32Array(14)).forEach(n=>out+=chars[n%chars.length]);$('newPassword').value=out;}
- async function copyPassword(){const v=$('newPassword').value;if(!v)return;try{await navigator.clipboard.writeText(v);}catch{ $('newPassword').select();document.execCommand('copy');}}
- async function saveAccount(e){e.preventDefault();const f=e.currentTarget,d=Object.fromEntries(new FormData(f)),newPassword=d.new_password;delete d.new_password;d.auth_user_id=d.auth_user_id||null;d.username=d.username?.trim().toLowerCase()||null;d.must_change_password=d.must_change_password==='true';if(d.username&&!/^[a-z0-9._@-]+$/.test(d.username)){ $('accountError').textContent='اسم المستخدم يجب أن يكون بالإنجليزية، ويمكن أن يحتوي على أرقام ونقطة وشرطة فقط.';$('accountError').classList.remove('hide');return;}const old=accountFor(d.person_id);try{if(old)await req(`/rest/v1/person_accounts?id=eq.${encodeURIComponent(old.id)}`,{method:'PATCH',headers:{Prefer:'return=minimal'},body:JSON.stringify({...d,updated_at:new Date().toISOString()})});else await req('/rest/v1/person_accounts',{method:'POST',headers:{Prefer:'return=minimal'},body:JSON.stringify(d)});if(newPassword)await req('/rest/v1/rpc/reset_person_password',{method:'POST',body:JSON.stringify({p_person_id:d.person_id,p_new_password:newPassword})});$('accountDialog').close();await load();}catch(err){console.error(err);$('accountError').textContent='تعذر حفظ الحساب. تأكد من عدم تكرار اسم المستخدم، ومن ربط حساب دخول قبل إعادة كلمة المرور.';$('accountError').classList.remove('hide');}}
+ function showMessage(message,type='success'){
+  let box=document.getElementById('peopleToast');
+  if(!box){box=document.createElement('div');box.id='peopleToast';box.style.cssText='position:fixed;left:24px;bottom:24px;z-index:99999;padding:12px 18px;border-radius:12px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.18);transition:.2s;max-width:340px';document.body.appendChild(box);}
+  box.textContent=message;box.style.background=type==='error'?'#b42318':'#08765f';box.style.color='#fff';box.style.opacity='1';box.style.transform='translateY(0)';
+  clearTimeout(box._timer);box._timer=setTimeout(()=>{box.style.opacity='0';box.style.transform='translateY(8px)';},2200);
+ }
+ async function copyPassword(){
+  const input=$('newPassword'),v=input.value.trim();
+  if(!v){showMessage('أنشئ كلمة مرور أولًا.','error');return;}
+  let copied=false;
+  try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(v);copied=true;}}catch(e){console.warn('Clipboard API failed',e);}
+  if(!copied){try{input.focus();input.select();input.setSelectionRange(0,input.value.length);copied=document.execCommand('copy');}catch(e){console.warn('Fallback copy failed',e);}}
+  showMessage(copied?'تم نسخ كلمة المرور.':'تعذر النسخ تلقائيًا؛ حدّد كلمة المرور وانسخها يدويًا.',copied?'success':'error');
+ }
+ async function saveAccount(e){
+  e.preventDefault();
+  const f=e.currentTarget,submit=f.querySelector('button[type="submit"]');
+  const d=Object.fromEntries(new FormData(f)),newPassword=(d.new_password||'').trim();delete d.new_password;
+  d.auth_user_id=d.auth_user_id||null;d.username=d.username?.trim().toLowerCase()||null;d.must_change_password=d.must_change_password==='true';
+  $('accountError').classList.add('hide');
+  if(!d.username){$('accountError').textContent='اكتب اسم المستخدم أو أنشئه تلقائيًا.';$('accountError').classList.remove('hide');return;}
+  if(!/^[a-z0-9._@-]+$/.test(d.username)){$('accountError').textContent='اسم المستخدم يجب أن يكون بالإنجليزية، ويمكن أن يحتوي على أرقام ونقطة وشرطة فقط.';$('accountError').classList.remove('hide');return;}
+  if(newPassword&&newPassword.length<8){$('accountError').textContent='كلمة المرور المؤقتة يجب ألا تقل عن 8 أحرف.';$('accountError').classList.remove('hide');return;}
+  const old=accountFor(d.person_id),originalText=submit.textContent;submit.disabled=true;submit.textContent='جاري الحفظ...';
+  try{
+    if(old)await req(`/rest/v1/person_accounts?id=eq.${encodeURIComponent(old.id)}`,{method:'PATCH',headers:{Prefer:'return=minimal'},body:JSON.stringify({...d,updated_at:new Date().toISOString()})});
+    else await req('/rest/v1/person_accounts',{method:'POST',headers:{Prefer:'return=minimal'},body:JSON.stringify(d)});
+    let passwordApplied=false;
+    if(newPassword&&d.auth_user_id){await req('/rest/v1/rpc/reset_person_password',{method:'POST',body:JSON.stringify({p_person_id:d.person_id,p_new_password:newPassword})});passwordApplied=true;}
+    $('accountDialog').close();
+    await load();
+    showMessage(newPassword&&!passwordApplied?'تم حفظ الحساب. اربطه بحساب دخول لتطبيق كلمة المرور المؤقتة.':'تم حفظ الحساب بنجاح.');
+  }catch(err){
+    console.error(err);
+    let msg='تعذر حفظ الحساب.';
+    const raw=String(err.message||'');
+    if(raw.includes('duplicate')||raw.includes('unique'))msg='اسم المستخدم مستخدم بالفعل. اختر اسمًا آخر.';
+    else if(raw.includes('no linked auth user'))msg='تم حفظ بيانات الحساب، لكن يجب ربطه بحساب دخول قبل تغيير كلمة المرور.';
+    $('accountError').textContent=msg;$('accountError').classList.remove('hide');
+  }finally{submit.disabled=false;submit.textContent=originalText;}
+ }
  document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab,.tab-panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');$(b.dataset.tab).classList.add('active')}));$('addPersonBtn').addEventListener('click',()=>openPerson());$('peopleSearch').addEventListener('input',render);$('personForm').addEventListener('submit',savePerson);$('accountForm').addEventListener('submit',saveAccount);$('usernameMode').addEventListener('change',applyUsernameMode);$('generatePasswordBtn').addEventListener('click',generatePassword);$('copyPasswordBtn').addEventListener('click',copyPassword);document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>$(b.dataset.close).close()));document.addEventListener('click',e=>{const ep=e.target.closest('[data-edit-person]');if(ep)openPerson(ep.dataset.editPerson);const ac=e.target.closest('[data-account-person]');if(ac)openAccount(ac.dataset.accountPerson)});load();});
 })();
