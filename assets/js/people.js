@@ -2,6 +2,16 @@
  const state={people:[],accounts:[],users:[],audit:[]}; const $=id=>document.getElementById(id); let currentPersonId=null;
  async function req(path,opt={}){const r=await api(path,opt);if(!r.ok){const t=await r.text();const e=new Error(t||`HTTP ${r.status}`);e.status=r.status;throw e;}if(r.status===204)return null;const t=await r.text();return t?JSON.parse(t):null;}
  const accountFor=id=>state.accounts.find(a=>a.person_id===id); const escv=v=>esc(v??'');
+ const AR_MONTHS=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+ const AR_DAYS=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+ function pad2(n){return String(n).padStart(2,'0');}
+ function fmtDate(v){
+  if(!v)return '—';
+  const d=new Date(v);if(Number.isNaN(d.getTime()))return '—';
+  const day=AR_DAYS[d.getDay()],date=pad2(d.getDate()),month=AR_MONTHS[d.getMonth()],year=d.getFullYear();
+  let h=d.getHours(),period=h>=12?'مساءً':'صباحًا';h=h%12||12;
+  return `${day} ${date} ${month} ${year} - ${pad2(h)}:${pad2(d.getMinutes())} ${period}`;
+ }
  function statusLabel(s){return ({active:'نشط',inactive:'غير نشط',archived:'مؤرشف',pending:'بانتظار التفعيل',suspended:'موقوف',locked:'مقفل',closed:'مغلق'})[s]||s||'—';}
  function actionLabel(a){return ({account_created:'إنشاء حساب',account_updated:'تعديل حساب',password_reset:'إعادة تعيين كلمة المرور',account_linked:'ربط حساب دخول',account_unlinked:'إلغاء ربط حساب'})[a]||a;}
  function browserLabel(ua){if(!ua)return 'غير متاح';if(/Edg\//.test(ua))return 'Microsoft Edge';if(/Chrome\//.test(ua))return 'Google Chrome';if(/Firefox\//.test(ua))return 'Mozilla Firefox';if(/Safari\//.test(ua))return 'Safari';return 'متصفح آخر';}
