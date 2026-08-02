@@ -66,7 +66,8 @@ document.addEventListener("DOMContentLoaded",()=>{
   form.addEventListener("submit",async e=>{
     e.preventDefault();
     const role=form.querySelector('input[name="loginRole"]:checked')?.value||"student";
-    const email=document.getElementById("email").value.trim();
+    const identifier=document.getElementById("email").value.trim();
+    let email=identifier;
     const password=document.getElementById("password").value;
     const box=document.getElementById("loginError");
     const btn=document.getElementById("unifiedLoginBtn");
@@ -76,6 +77,12 @@ document.addEventListener("DOMContentLoaded",()=>{
     try{
       clearPortalSessions();
 
+      if(!identifier.includes("@")){
+        const rr=await fetch(`${PORTAL_SUPABASE_URL}/rest/v1/rpc/resolve_login_email`,{method:"POST",headers:{"apikey":PORTAL_SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_identifier:identifier})});
+        if(rr.ok){email=await rr.json();}
+        if(!email) throw new Error("LOGIN_FAILED");
+      }
+
       const res=await fetch(`${PORTAL_SUPABASE_URL}/auth/v1/token?grant_type=password`,{
         method:"POST",
         headers:{"apikey":PORTAL_SUPABASE_KEY,"Content-Type":"application/json"},
@@ -83,6 +90,9 @@ document.addEventListener("DOMContentLoaded",()=>{
       });
       if(!res.ok) throw new Error("LOGIN_FAILED");
       const session=await res.json();
+
+      const statusRes=await authFetch("/rest/v1/rpc/current_account_status",session);
+      if(statusRes.ok){const accountStatus=await statusRes.json();if(["suspended","locked","closed"].includes(accountStatus)){box.textContent="هذا الحساب موقوف أو مغلق. راجع إدارة المدرسة.";box.classList.remove("hide");return;}}
 
       // نتحقق أولًا هل الحساب مدير. المدير يستطيع معاينة أي بوابة بنفس بياناته.
       const isAdmin=await checkAdmin(session);
