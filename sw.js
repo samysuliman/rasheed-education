@@ -1,7 +1,10 @@
-const CACHE_NAME = "rasheed-academy-v2";
+const CACHE_NAME = "rasheed-platform-v3";
 const STATIC_FILES = [
+  "./index.html",
+  "./academy.html",
   "./manifest.webmanifest",
   "./assets/rasheed-academy-logo.png",
+  "./assets/logos/rasheed-platform-mark.png",
   "./assets/icons/icon-192.png",
   "./assets/icons/icon-512.png"
 ];

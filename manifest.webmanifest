@@ -1,26 +1,16 @@
 {
-  "name": "أكاديمية رشيد | Rasheed Academy",
-  "short_name": "أكاديمية رشيد",
-  "description": "منصة أكاديمية رشيد للتعليم وإدارة الدراسة والحصص والواجبات.",
+  "name": "منصة رشيد التعليمية | Rasheed Education Platform",
+  "short_name": "منصة رشيد",
+  "description": "منصة متكاملة لإدارة المؤسسات التعليمية والتدريب والتعليم الإلكتروني.",
   "lang": "ar",
   "dir": "rtl",
-  "start_url": "./",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f8f7f3",
+  "background_color": "#f5f0e6",
   "theme_color": "#073d32",
   "icons": [
-    {
-      "src": "assets/icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "assets/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
+    {"src":"assets/icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"assets/icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
   ]
 }
