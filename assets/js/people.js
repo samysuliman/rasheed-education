@@ -18,9 +18,16 @@
   const d=new Date(v);if(Number.isNaN(d.getTime()))return '—';
   const day=AR_DAYS[d.getDay()],date=pad2(d.getDate()),month=AR_MONTHS[d.getMonth()],year=String(d.getFullYear());
   let h=d.getHours(),period=h>=12?'مساءً':'صباحًا';h=h%12||12;
-  return `<span class="audit-date"><span>${escv(day)} ${escv(date)} ${escv(month)} ${escv(year)}</span><span class="audit-time" dir="ltr">${escv(pad2(h))}:${escv(pad2(d.getMinutes()))}</span><span>${escv(period)}</span></span>`;
+  const time=`${pad2(h)}:${pad2(d.getMinutes())}`;
+  return `<span class="audit-date"><span class="audit-date-main">${escv(day)}، ${escv(date)} ${escv(month)} ${escv(year)}</span><span class="audit-time-line"><span class="audit-time-number" dir="ltr">${escv(time)}</span> ${escv(period)}</span></span>`;
  }
  function statusLabel(s){return ({active:'نشط',inactive:'غير نشط',archived:'مؤرشف',pending:'بانتظار التفعيل',suspended:'موقوف',locked:'مقفل',closed:'مغلق'})[s]||s||'—';}
+
+ function normalizeDateInput(el){
+  let v=(el.value||'').replace(/[^0-9-]/g,'').slice(0,10);
+  if(/^\d{8}$/.test(v))v=`${v.slice(0,4)}-${v.slice(4,6)}-${v.slice(6,8)}`;
+  el.value=v;
+ }
  function actionLabel(a){return ({account_created:'إنشاء حساب',account_updated:'تعديل حساب',password_reset:'إعادة تعيين كلمة المرور',account_linked:'ربط حساب دخول',account_unlinked:'إلغاء ربط حساب'})[a]||a;}
  function browserLabel(ua){if(!ua)return 'غير متاح';if(/Edg\//.test(ua))return 'Microsoft Edge';if(/Chrome\//.test(ua))return 'Google Chrome';if(/Firefox\//.test(ua))return 'Mozilla Firefox';if(/Safari\//.test(ua))return 'Safari';return 'متصفح آخر';}
  function renderAudit(){const q=($('auditSearch')?.value||'').trim().toLowerCase(),action=$('auditAction')?.value||'',from=$('auditFrom')?.value||'',to=$('auditTo')?.value||'';const rows=state.audit.filter(x=>{const hay=[x.person_name,x.performed_by_email,x.username,actionLabel(x.action)].join(' ').toLowerCase();const day=(x.created_at||'').slice(0,10);return (!q||hay.includes(q))&&(!action||x.action===action)&&(!from||day>=from)&&(!to||day<=to)});$('auditList').innerHTML=rows.length?rows.map(x=>`<article class="audit-row"><div class="audit-head"><div><div class="audit-title">${escv(actionLabel(x.action))}</div><div class="meta">${escv(x.person_name||'شخص غير معروف')} · ${fmtDateHtml(x.created_at)}</div></div><span class="audit-status ${x.result_status==='failed'?'failed':''}">${x.result_status==='failed'?'فشل':'نجاح'}</span></div><div class="audit-details meta"><span>منفذ العملية: ${escv(x.performed_by_email||'غير معروف')}</span><span>اسم المستخدم: ${escv(x.username||'—')}</span><span>الجهاز/المتصفح: ${escv(browserLabel(x.user_agent))}</span><span>عنوان IP: ${escv(x.client_ip||'غير متاح')}</span></div><div class="actions" style="margin-top:10px"><button class="btn btn-secondary" data-audit-id="${x.id}">عرض التفاصيل</button></div></article>`).join(''):'<div class="empty">لا توجد عمليات مطابقة.</div>';}
