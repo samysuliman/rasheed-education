@@ -23,10 +23,18 @@
  }
  function statusLabel(s){return ({active:'نشط',inactive:'غير نشط',archived:'مؤرشف',pending:'بانتظار التفعيل',suspended:'موقوف',locked:'مقفل',closed:'مغلق'})[s]||s||'—';}
 
- function normalizeDateInput(el){
-  let v=(el.value||'').replace(/[^0-9-]/g,'').slice(0,10);
-  if(/^\d{8}$/.test(v))v=`${v.slice(0,4)}-${v.slice(4,6)}-${v.slice(6,8)}`;
-  el.value=v;
+ function formatDateOnly(v){
+  if(!v)return '';
+  const parts=String(v).slice(0,10).split('-');
+  if(parts.length!==3)return '';
+  return `${parts[2]} / ${parts[1]} / ${parts[0]}`;
+ }
+ function syncDateControl(nativeId,displayId){
+  const native=$(nativeId),display=$(displayId);if(!native||!display)return;display.value=formatDateOnly(native.value);
+ }
+ function openNativeDate(native){
+  if(!native)return;
+  try{if(typeof native.showPicker==='function')native.showPicker();else native.click();}catch(_){native.focus();native.click();}
  }
  function actionLabel(a){return ({account_created:'إنشاء حساب',account_updated:'تعديل حساب',password_reset:'إعادة تعيين كلمة المرور',account_linked:'ربط حساب دخول',account_unlinked:'إلغاء ربط حساب'})[a]||a;}
  function browserLabel(ua){if(!ua)return 'غير متاح';if(/Edg\//.test(ua))return 'Microsoft Edge';if(/Chrome\//.test(ua))return 'Google Chrome';if(/Firefox\//.test(ua))return 'Mozilla Firefox';if(/Safari\//.test(ua))return 'Safari';return 'متصفح آخر';}
@@ -44,7 +52,7 @@
  }
  function fillUsers(){$('authUserSelect').innerHTML='<option value="">— بدون حساب حاليًا —</option>'+state.users.map(u=>`<option value="${u.id}">${escv(u.email||u.id)}</option>`).join('');}
  async function load(){if(!await requireAdmin())return;try{const [people,accounts,users,audit]=await Promise.all([req('/rest/v1/people?select=*&order=created_at.desc'),req('/rest/v1/person_accounts?select=*&order=created_at.desc'),req('/rest/v1/rpc/list_identity_users',{method:'POST',body:'{}'}),req('/rest/v1/rpc/list_account_audit_logs',{method:'POST',body:'{}'})]);Object.assign(state,{people,accounts,users,audit});fillUsers();render();}catch(e){console.error(e);if(e.status===404||String(e.message).includes('PGRST'))$('setupNotice').classList.remove('hide');else{$('loadError').textContent='تعذر تحميل الأشخاص والحسابات.';$('loadError').classList.remove('hide');}}}
- function openPerson(id){const f=$('personForm');f.reset();$('personError').classList.add('hide');const p=state.people.find(x=>x.id===id);$('personDialogTitle').textContent=p?'تعديل بطاقة الشخص':'إضافة شخص';if(p)Object.keys(p).forEach(k=>{if(f.elements[k]&&p[k]!=null)f.elements[k].value=p[k]});$('personDialog').showModal();}
+ function openPerson(id){const f=$('personForm');f.reset();$('personError').classList.add('hide');const p=state.people.find(x=>x.id===id);$('personDialogTitle').textContent=p?'تعديل بطاقة الشخص':'إضافة شخص';if(p)Object.keys(p).forEach(k=>{if(f.elements[k]&&p[k]!=null)f.elements[k].value=p[k]});syncDateControl('birthDateNative','birthDateDisplay');$('personDialog').showModal();}
  async function savePerson(e){e.preventDefault();const f=e.currentTarget,d=Object.fromEntries(new FormData(f)),id=d.id;delete d.id;['full_name_en','national_id','nationality','birth_date','mobile','whatsapp','email','photo_url','address','notes'].forEach(k=>{if(!d[k])d[k]=null});try{if(id)await req(`/rest/v1/people?id=eq.${encodeURIComponent(id)}`,{method:'PATCH',headers:{Prefer:'return=minimal'},body:JSON.stringify({...d,updated_at:new Date().toISOString()})});else await req('/rest/v1/people',{method:'POST',headers:{Prefer:'return=minimal'},body:JSON.stringify(d)});$('personDialog').close();await load();}catch(err){console.error(err);$('personError').textContent='تعذر الحفظ. تحقق من عدم تكرار رقم الهوية.';$('personError').classList.remove('hide');}}
  function applyUsernameMode(){const p=state.people.find(x=>x.id===currentPersonId),mode=$('usernameMode').value;if(!p||mode==='manual')return;const v=suggestedUsername(p,mode);if(v)$('accountForm').elements.username.value=v;}
  function openAccount(personId){currentPersonId=personId;const f=$('accountForm');f.reset();f.elements.person_id.value=personId;const a=accountFor(personId);$('usernameMode').value=a?.username?'manual':'auto';if(a){f.elements.username.value=a.username||'';f.elements.auth_user_id.value=a.auth_user_id||'';f.elements.account_status.value=a.account_status;f.elements.must_change_password.value=String(a.must_change_password);}else{f.elements.account_status.value='pending';f.elements.must_change_password.value='true';applyUsernameMode();}$('accountError').classList.add('hide');$('accountDialog').showModal();}
@@ -106,5 +114,17 @@
  }
 
  function openAudit(id){const x=state.audit.find(a=>a.id===id);if(!x)return;const details=x.details||{};$('auditDetails').innerHTML=`<div class="detail-grid"><div class="detail-item"><b>العملية</b>${escv(actionLabel(x.action))}</div><div class="detail-item"><b>النتيجة</b>${x.result_status==='failed'?'فشل':'نجاح'}</div><div class="detail-item"><b>الشخص المستهدف</b>${escv(x.person_name||'—')}</div><div class="detail-item"><b>منفذ العملية</b>${escv(x.performed_by_email||'—')}</div><div class="detail-item"><b>التاريخ والوقت</b>${fmtDateHtml(x.created_at)}</div><div class="detail-item"><b>الجهاز والمتصفح</b>${escv(browserLabel(x.user_agent))}</div><div class="detail-item"><b>عنوان IP</b>${escv(x.client_ip||'غير متاح')}</div><div class="detail-item"><b>اسم المستخدم</b>${escv(x.username||'—')}</div></div><h3>تفاصيل التغيير</h3><pre class="json-box">${escv(JSON.stringify(details,null,2))}</pre>`;$('auditDialog').showModal();}
- document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab,.tab-panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');$(b.dataset.tab).classList.add('active')}));$('addPersonBtn').addEventListener('click',()=>openPerson());$('peopleSearch').addEventListener('input',render);['auditSearch','auditAction','auditFrom','auditTo'].forEach(id=>$(id)?.addEventListener(id==='auditSearch'?'input':'change',renderAudit));$('clearAuditFilters')?.addEventListener('click',()=>{['auditSearch','auditAction','auditFrom','auditTo'].forEach(id=>$(id).value='');renderAudit();});$('personForm').addEventListener('submit',savePerson);$('accountForm').addEventListener('submit',saveAccount);$('usernameMode').addEventListener('change',applyUsernameMode);document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>$(b.dataset.close).close()));document.addEventListener('click',e=>{const ep=e.target.closest('[data-edit-person]');if(ep)openPerson(ep.dataset.editPerson);const ac=e.target.closest('[data-account-person]');if(ac)openAccount(ac.dataset.accountPerson);const au=e.target.closest('[data-audit-id]');if(au)openAudit(au.dataset.auditId)});load();});
+ document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab,.tab-panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');$(b.dataset.tab).classList.add('active')}));
+  $('addPersonBtn').addEventListener('click',()=>openPerson());$('peopleSearch').addEventListener('input',render);
+  ['auditSearch','auditAction'].forEach(id=>$(id)?.addEventListener(id==='auditSearch'?'input':'change',renderAudit));
+  ['auditFrom','auditTo'].forEach(id=>$(id)?.addEventListener('change',()=>{syncDateControl(id,id+'Display');renderAudit();}));
+  $('birthDateNative')?.addEventListener('change',()=>syncDateControl('birthDateNative','birthDateDisplay'));
+  document.querySelectorAll('[data-date-open]').forEach(btn=>btn.addEventListener('click',()=>openNativeDate($(btn.dataset.dateOpen))));
+  $('clearAuditFilters')?.addEventListener('click',()=>{['auditSearch','auditAction','auditFrom','auditTo'].forEach(id=>$(id).value='');syncDateControl('auditFrom','auditFromDisplay');syncDateControl('auditTo','auditToDisplay');renderAudit();});
+  $('personForm').addEventListener('submit',savePerson);$('accountForm').addEventListener('submit',saveAccount);$('usernameMode').addEventListener('change',applyUsernameMode);
+  document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>$(b.dataset.close).close()));
+  document.addEventListener('click',e=>{const ep=e.target.closest('[data-edit-person]');if(ep)openPerson(ep.dataset.editPerson);const ac=e.target.closest('[data-account-person]');if(ac)openAccount(ac.dataset.accountPerson);const au=e.target.closest('[data-audit-id]');if(au)openAudit(au.dataset.auditId)});
+  syncDateControl('auditFrom','auditFromDisplay');syncDateControl('auditTo','auditToDisplay');syncDateControl('birthDateNative','birthDateDisplay');load();
+ });
 })();
